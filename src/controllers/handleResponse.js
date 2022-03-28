@@ -1,12 +1,6 @@
-const handleResponse = (statusCode, data) => {
-	const statusMessage =
-		statusCode === 200 || statusCode === 201 ? 'Success' : 'Fail';
-	const response = {
-		status: statusMessage,
-		statusCode,
-		data,
-	};
-	return response;
+const handleResponse = (res, code, data) => {
+	const message = code < 400 ? res.__('success') : res.__('fail');
+	return res.status(code).json({ status: message, code, data });
 };
 export default handleResponse;
 

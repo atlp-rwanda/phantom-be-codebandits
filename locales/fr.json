@@ -1,0 +1,10 @@
+{
+	"welcome": "Bienvenue sur Phantom",
+	"success": "succès",
+	"welcomeAPI": "Bienvenue sur Phantom API",
+	"fail": "échoué",
+	"message": "message",
+	"sent": "Envoyé",
+	"serverError": "Server errer",
+	"notFound": "Demande introuvable"
+}
