@@ -1,0 +1,46 @@
+{
+	"name": "phantom-be-codebandits",
+	"version": "1.0.0",
+	"type": "module",
+	"description": "backend repository for phantom app",
+	"main": "app.js",
+	"scripts": {
+		"test": "echo \"Error: no test specified\" && exit 1",
+		"prepare": "husky install",
+    "start":"node src/app.js",
+		"dev": "nodemon src/app.js",
+		"lint": "eslint \"**/*.js\" --max-warnings=0",
+		"format": "prettier --write \"./**/*.{js,jsx,json}\""
+	},
+	"repository": {
+		"type": "git",
+		"url": "git+https://github.com/atlp-rwanda/phantom-be-codebandits.git"
+	},
+	"author": "codebandits",
+	"license": "ISC",
+	"bugs": {
+		"url": "https://github.com/atlp-rwanda/phantom-be-codebandits/issues"
+	},
+	"homepage": "https://github.com/atlp-rwanda/phantom-be-codebandits#readme",
+	"devDependencies": {
+		"eslint": "^8.12.0",
+		"eslint-config-airbnb-base": "^15.0.0",
+		"eslint-plugin-import": "^2.25.4",
+		"husky": "^7.0.4",
+		"lint-staged": "^12.3.7",
+		"prettier": "2.6.1",
+    "eslint-config-prettier": "^8.5.0"
+	},
+	"lint-staged": {
+		"*.js": "npm run lint",
+		"*.{js,html,css,md}": "prettier --write"
+	},
+	"dependencies": {
+		"express": "^4.17.3",
+		"nodemon": "^2.0.15",
+		"swagger-jsdoc": "^6.1.0",
+		"swagger-ui-express": "^4.3.0",
+		"winston": "^3.6.0"
+	}
+}
+
