@@ -1,0 +1,33 @@
+name: deploy to production
+on:
+  push:
+    branches:
+      - main
+  workflow_dispatch:
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v2
+      - uses: actions/setup-node@v2
+        with:
+          node-version: "16.x"
+      - name: Install all dependencies
+        run: npm install
+      - name: Run tests
+        run: npm run coverage
+  deploy:
+    # deploy to the heroku production pipeline
+    concurrency: 
+      group: heroku_deployment
+      cancel-in-progress: false
+    runs-on: ubuntu-latest
+    environment: production
+    needs: [build]
+    steps:
+      - uses: actions/checkout@v2
+      - uses: akhileshns/heroku-deploy@v3.12.12
+        with:
+          heroku_api_key: ${{secrets.HEROKU_API_KEY}}
+          heroku_app_name: "phantom-be-codebandits-pro"
+          heroku_email: "samyshyaka@gmail.com"
