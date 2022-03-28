@@ -6,5 +6,7 @@
 	"message": "ubutumwa",
 	"sent": "Igikorwa cyagenze neza",
 	"notFound": "Ubusabe ntibubonetse",
-	"serverError": "Ni ikibazo cyo kuri seriveri"
+	"serverError": "Ni ikibazo cyo kuri seriveri",
+	"user_conflict": "Konti ifite iyi email isanzwe muri sisitemu",
+	"bad_data": "Amakuru mwatanze ntabwo yuzuye"
 }

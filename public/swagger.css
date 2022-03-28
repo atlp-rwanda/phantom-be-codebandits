@@ -1,0 +1,27 @@
+@import url('https://fonts.googleapis.com/css2?family=Raleway:wght@300;400;500;700;900&display=swap');
+
+* {
+	font-family: 'Raleway';
+	box-sizing: border-box;
+}
+
+.swagger-ui .topbar {
+	display: none;
+}
+
+.swagger-ui span,
+.swagger-ui a,
+.swagger-ui small,
+.swagger-ui h2,
+select,
+option,
+button,
+.opblock-summary-description,
+pre,
+p,
+td,
+th,
+h5,
+h1 {
+	font-family: 'Raleway' !important;
+}

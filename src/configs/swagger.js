@@ -1,5 +1,12 @@
 const serverURL = process.env.SERVER_URL;
 
+export const customizationOptions = {
+	customCssUrl: '/swagger.css',
+	customSiteTitle: 'DOCS| Phantom Codebandits',
+	customfavIcon:
+		'https://res.cloudinary.com/feyton/image/upload/v1644861999/Codebandits/codebandits_favicon_ahnxce.png',
+};
+
 const options = {
 	definition: {
 		openapi: '3.0.0',
@@ -19,6 +26,7 @@ const options = {
 		servers: [
 			{
 				url: serverURL || 'http://localhost:5000/',
+				description: 'Phantom Server',
 			},
 		],
 	},
