@@ -1,0 +1,10 @@
+{
+	"welcome": "Murakaza neza kuri Phantom backend",
+	"success": "byagenze neza",
+	"welcomeAPI": "Murakaza neza kuri APIs za Phantom",
+	"fail": "ntibikunze",
+	"message": "ubutumwa",
+	"sent": "Igikorwa cyagenze neza",
+	"notFound": "Ubusabe ntibubonetse",
+	"serverError": "Ni ikibazo cyo kuri seriveri"
+}

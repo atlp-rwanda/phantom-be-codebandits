@@ -23,4 +23,3 @@ const logConfig = {
 const logger = createLogger(logConfig);
 
 export default logger;
-

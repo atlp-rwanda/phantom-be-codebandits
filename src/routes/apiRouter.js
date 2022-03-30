@@ -3,9 +3,8 @@ import handleResponse from '../controllers/handleResponse.js';
 
 const apiRouter = Router();
 apiRouter.all('*', (req, res) =>
-	res
-		.status(200)
-		.json(handleResponse(200, { message: 'Welcome to phantom API' }))
+	handleResponse(res, 200, { message: res.__('welcomeAPI') })
 );
 
 export default apiRouter;
+

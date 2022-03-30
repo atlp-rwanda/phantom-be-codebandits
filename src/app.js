@@ -1,25 +1,30 @@
 import 'dotenv/config';
+import bodyparser from 'body-parser';
 import express from 'express';
+import path from 'path';
 import swaggerJSDoc from 'swagger-jsdoc';
 import swaggerUi from 'swagger-ui-express';
 import options from './configs/swagger.js';
 import logger from './configs/winston.js';
 import handleResponse from './controllers/handleResponse.js';
 import apiRouter from './routes/apiRouter.js';
+import i18n from './configs/i18n.js';
 
 const swaggerSpec = swaggerJSDoc(options);
+const __dirname = path.resolve();
 
 const PORT = process.env.PORT || 5000;
 const app = express();
 
+app.use(bodyparser.json());
+app.use(express.static(`${__dirname}/public`));
+app.use(i18n.init);
 app.use('/api/v1', apiRouter);
 
 app.get('/', (req, res) =>
-	res.status(200).json(
-		handleResponse(200, {
-			message: 'Welcome to Phantom backend',
-		})
-	)
+	handleResponse(res, 200, {
+		message: res.__('welcome'),
+	})
 );
 
 app.use(
@@ -29,9 +34,7 @@ app.use(
 );
 
 app.all('*', (req, res) =>
-	res
-		.status(404)
-		.json(handleResponse(404, { message: 'Requested page not found' }))
+	handleResponse(res, 404, { message: res.__('notFound') })
 );
 
 app.listen(PORT, () => {

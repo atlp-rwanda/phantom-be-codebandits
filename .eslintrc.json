@@ -13,6 +13,7 @@
 		"import/extensions": ["error", "always", { "ignorePackages": true }],
 		"no-console": 1,
 		"no-unused-vars": 1,
-		"import/no-extraneous-dependencies": ["error", { "devDependencies": true }]
+		"import/no-extraneous-dependencies": ["error", { "devDependencies": true }],
+		"no-underscore-dangle": 0
 	}
 }

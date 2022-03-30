@@ -25,19 +25,21 @@
 	"devDependencies": {
 		"eslint": "^8.12.0",
 		"eslint-config-airbnb-base": "^15.0.0",
-		"eslint-config-prettier": "^8.5.0",
 		"eslint-plugin-import": "^2.25.4",
 		"husky": "^7.0.4",
 		"lint-staged": "^12.3.7",
-		"prettier": "2.6.1"
+		"prettier": "2.6.1",
+		"eslint-config-prettier": "^8.5.0"
 	},
 	"lint-staged": {
 		"*.js": "npm run lint",
-		"*.{js,html,css,md}": "prettier --write"
+		"*.{js,html,css,md}": "prettier --write  \"./**/*.{js,jsx,json}\""
 	},
 	"dependencies": {
-    "dotenv": "^16.0.0",
+		"dotenv": "^16.0.0",
+		"body-parser": "^1.19.2",
 		"express": "^4.17.3",
+		"i18n": "^0.14.2",
 		"nodemon": "^2.0.15",
 		"swagger-jsdoc": "^6.1.0",
 		"swagger-ui-express": "^4.3.0",
