@@ -7,7 +7,9 @@ check out Phantom frontend repository [linked here](https://github.com/atlp-rwan
 ## Getting Started
 
 These instructions will get you a copy of the project up and running on your local machine for development and testing purposes.
+
 ## Pipeline
+
 - Staging app [linked here](https://phantom-codebandits-staging.herokuapp.com/) use the `develop` branch
 - Production app [linked here](https://phantom-codebandits-pro.herokuapp.com/) use `main` branch.
 
@@ -25,6 +27,19 @@ git fetch origin
 npm install
 ```
 
+### Configuration
+
+You can configure the application with the following [environment variables]:
+
+- **`PORT`**: The HTTP port to run the application on.<br/>
+  Default: `5000`.
+
+- **`LOG_LEVEL`**: The lowest level of logs to output, one of `error`, `warn`, `info`, `verbose`, `debug`.<br/>
+  Default:`info` in development.
+
+- **`SERVER_URL`**: server link of the project currently being used in Swagger documentation configuration<br/>
+  Default: `"http://localhost:5000/"`
+
 ## Running the app
 
 ```
@@ -33,4 +48,4 @@ npm run start
 
 ## Authors
 
-* **Codebandits**
+- **Codebandits**
