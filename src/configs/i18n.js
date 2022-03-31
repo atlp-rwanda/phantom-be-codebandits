@@ -11,4 +11,3 @@ i18n.configure({
 });
 
 export default i18n;
-

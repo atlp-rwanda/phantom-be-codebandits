@@ -7,4 +7,3 @@ apiRouter.all('*', (req, res) =>
 );
 
 export default apiRouter;
-

@@ -5,7 +5,8 @@
 	"description": "backend repository for phantom app",
 	"main": "app.js",
 	"scripts": {
-		"test": "echo \"Error: no test specified\" && exit 1",
+		"test": "c8 --check-coverage mocha src/**/tests/*.test.js --exit",
+		"coverage": "c8 --check-coverage -r lcov npm t",
 		"prepare": "husky install",
 		"start": "node src/app.js",
 		"dev": "nodemon src/app.js",
@@ -23,13 +24,18 @@
 	},
 	"homepage": "https://github.com/atlp-rwanda/phantom-be-codebandits#readme",
 	"devDependencies": {
+		"chai": "^4.3.6",
+		"coveralls": "^3.1.1",
 		"eslint": "^8.12.0",
 		"eslint-config-airbnb-base": "^15.0.0",
+		"eslint-config-prettier": "^8.5.0",
 		"eslint-plugin-import": "^2.25.4",
 		"husky": "^7.0.4",
 		"lint-staged": "^12.3.7",
+		"mocha": "^9.2.2",
+		"nyc": "^15.1.0",
 		"prettier": "2.6.1",
-		"eslint-config-prettier": "^8.5.0"
+		"sinon": "^13.0.1"
 	},
 	"lint-staged": {
 		"*.js": "npm run lint",
@@ -38,6 +44,8 @@
 	"dependencies": {
 		"dotenv": "^16.0.0",
 		"body-parser": "^1.19.2",
+		"c8": "^7.11.0",
+		"chai-http": "^4.3.0",
 		"express": "^4.17.3",
 		"i18n": "^0.14.2",
 		"nodemon": "^2.0.15",

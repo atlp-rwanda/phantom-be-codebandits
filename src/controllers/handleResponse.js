@@ -3,4 +3,3 @@ const handleResponse = (res, code, data) => {
 	return res.status(code).json({ status: message, code, data });
 };
 export default handleResponse;
-
