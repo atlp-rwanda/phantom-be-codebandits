@@ -6,5 +6,7 @@
 	"message": "message",
 	"sent": "Envoyé",
 	"serverError": "Server errer",
-	"notFound": "Demande introuvable"
+	"notFound": "Demande introuvable",
+	"bad_data": "Données invalides",
+	"user_conflict": "L'utilisateur avec cet email existe"
 }

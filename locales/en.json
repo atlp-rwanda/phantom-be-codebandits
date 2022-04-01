@@ -6,5 +6,7 @@
 	"sent": "Successfully sent",
 	"notFound": "Request not found",
 	"serverError": "Server error",
-	"Welcome": "Welcome"
+	"Welcome": "Welcome",
+	"user_conflict": "User exists with this email exists",
+	"bad_data": "Invalid data"
 }
