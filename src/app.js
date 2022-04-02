@@ -15,7 +15,9 @@ import indexRouter from './routes/indexRouter.js';
 const swaggerSpec = swaggerJSDoc(options);
 const __dirname = path.resolve();
 
+/* c8 ignore start */
 const PORT = process.env.PORT || 5000;
+/* c8 ignore next stop */
 const app = express();
 app.use(cors());
 app.use(reqLogger);
@@ -44,6 +46,7 @@ AppDataSource.initialize()
 		});
 	})
 	.catch((error) => {
+		/* c8 ignore next 5 */
 		logger.error(error.message);
 		logger.error(
 			"The server couldn't be started. The database is not connected"

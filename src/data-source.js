@@ -1,8 +1,9 @@
+/* eslint-disable */
 import 'reflect-metadata';
 import { DataSource } from 'typeorm';
 import { UserSchema } from './models/user.js';
 
-export const AppDataSource = new DataSource({
+let options = {
 	type: 'postgres',
 	host: process.env.DB_HOST,
 	port: process.env.DB_PORT,
@@ -10,7 +11,6 @@ export const AppDataSource = new DataSource({
 	password: process.env.DB_PASS,
 	database: process.env.DB,
 	synchronize: true,
-
 	logging: false,
 	entities: [UserSchema],
 	migrations: ['./migration/*.js'],
@@ -18,6 +18,19 @@ export const AppDataSource = new DataSource({
 	cli: {
 		migrationsDir: './migration/',
 	},
-});
+};
+
+/* c8 ignore start  */
+if (process.env.NODE_ENV === 'production') {
+	Object.assign(options, {
+		extra: {
+			ssl: {
+				rejectUnauthorized: false,
+			},
+		},
+	});
+}
+/* c8 ignore */
+export const AppDataSource = new DataSource(options);
 
 export default AppDataSource;
