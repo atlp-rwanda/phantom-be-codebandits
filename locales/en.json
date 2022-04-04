@@ -14,5 +14,6 @@
 	"email_not_valid": "Email must be valid",
 	"email_found": "Email was found",
 	"email_not_found": "Email not found",
-	"link_sent": "Password reset link has been sent to your email"
+	"link_sent": "Password reset link has been sent to your email",
+	"emailNotExit": "emailNotExit"
 }

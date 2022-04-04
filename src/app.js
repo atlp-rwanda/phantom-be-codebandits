@@ -42,6 +42,7 @@ AppDataSource.initialize()
 	.then(async () => {
 		logger.info('Postgres database connected');
 		app.listen(PORT, () => {
+			app.emit('started');
 			logger.info(`app is listening on port ${PORT}`);
 		});
 	})
