@@ -34,7 +34,7 @@ const refresh = async (req, res) => {
 		return handleResponse(res, 200, { token: accessToken });
 		/* c8 ignore next 3 */
 	} catch (err) {
-		handleResponse(res, 500, { message: res.__('Server error') });
+		handleResponse(res, 500, { message: res.__('serverError') });
 	}
 };
 

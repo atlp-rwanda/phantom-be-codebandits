@@ -13,8 +13,9 @@
 	"password_required": "Mot de passe is requis",
 	"user_conflict": "L'utilisateur avec cet email existe",
 	"user does not exist": "l'utilisateur n'existe pas",
-	"wrong email or password": "mauvais email ou password",
-	"you need to login first": "tu dois d'abord te connecter",
 	"Unauthorized": "L'accès non autorisé",
-	"Password or email is invalid": "Le mot de passe ou l'e-mail est invalide"
+	"Password or email is invalid": "Le mot de passe ou l'e-mail est invalide",
+	"wrong email or password": "Mauvais email ou mot de passe",
+	"you need to login first": "Tu dois d'abord te connecter",
+	"logout successful": "Déconnecté avec succès"
 }
