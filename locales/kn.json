@@ -26,5 +26,19 @@
 	"token_invalid": "wakoresheje Ikimenyetso kitemewe cyangwa cyararangiye",
 	"A strong password required": "A strong password required",
 	"strong_password": "koresha Ijambobanga rikomeye",
-	"email_not_valid": "email_not_valid"
+	"email_not_valid": "email_not_valid",
+	"first_name_required": "Izina rya mbere rirakenewe",
+	"last_name_required": "Izina rya kabiri rirakenewe",
+	"min_3_char": "Byibura inyuguti 3 zirakenewe",
+	"password_invalid": "Ijambobanga rigomba kugira byibura inyuguti 8 rifite byibura inyuguti nkuru imwe inyuguti nto imwe umubare umwe nikimenyetso kimwe",
+	"mobile_number_required": "Nimero ya telefoni irakenewe",
+	"mobile_number_invalid": "nimero ya telefoni ntiyemewe ",
+	"company_required": "Ikigo kirakenewe",
+	"national_ID_required": "Indangamuntu irakenewe",
+	"license_required": "Uruhushya rurakenewe",
+	"driver_deleted": "umutwazi yasibwe",
+	"zero_users": "Nta makuru abitse muri sisitemu",
+	"driver_updated": "Umushoferi yahinduwe neza",
+	"national_ID_exist": "indangamuntu yatanzwe isanzwe iri muri sisitemu",
+	"license_ID_exist": "uruhushya rwatanzwe rusanzwe muri sisitemu"
 }

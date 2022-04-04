@@ -26,7 +26,7 @@
  *                          password:
  *                              required: true
  *                              type: string
- *                              example: 1234
+ *                              example: Andela@1234
  *
  *      responses:
  *          200:
@@ -35,17 +35,4 @@
  *              description: User does not exist
  *          400:
  *              description: Wrong email or password
- */
-
-/**
- * @swagger
- * /api/v1/accounts/logout:
- *  get:
- *      summary: Logout from phantom
- *      description: The
- *      tags:
- *          - Accounts
- *      responses:
- *          200:
- *              description: successfully logged out
  */

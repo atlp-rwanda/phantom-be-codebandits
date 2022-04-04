@@ -1,5 +1,5 @@
 import { Router } from 'express';
-import validate from '../utils/validate.js';
+import validate from '../utils/validateMiddleware.js';
 import {
 	forgotPassword,
 	resetPasswordCheck,

@@ -24,5 +24,19 @@
 	"link_sent": "Le lien de réinitialisation du mot de passe a été envoyé à votre adresse e-mail",
 	"successifully_reseted": "Mot de passe réinitialisé avec succès",
 	"strong_password": "utiliser un mot de passe fort",
-	"token_invalid": "Jeton invalide ou expiré"
+	"token_invalid": "Jeton invalide ou expiré",
+	"first_name_required": "Prenom est mandateur",
+	"last_name_required": "Nom est mandateur",
+	"min_3_char": "Minimum de 3 caractères requis",
+	"password_invalid": "Le mot de passe doit être supérieur à 8 et contenir au moins une lettre majuscule, une lettre minuscule, un chiffre et un symbole",
+	"mobile_number_required": "Le numéro de mobile est requis",
+	"mobile_number_invalid": "Le numéro de mobile est invalide ",
+	"company_required": "La compagnie est requise",
+	"national_ID_required": "L'identité nationale est requise",
+	"license_required": "La licence est requise",
+	"driver_deleted": "driver deleted successfully",
+	"zero_users": "aucun utilisateur dans la base de données",
+	"driver_updated": "Le pilote a été mis à jour avec succès",
+	"national_ID_exist": "L'utilisateur avec l'ID national fourni existe",
+	"license_ID_exist": "L'utilisateur avec la licence fournie existe"
 }

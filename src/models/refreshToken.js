@@ -38,6 +38,7 @@ export const RefreshTokenSchema = new EntitySchema({
 			joinColumn: true,
 			eager: true,
 			cascade: true,
+			onDelete: 'CASCADE',
 		},
 	},
 });

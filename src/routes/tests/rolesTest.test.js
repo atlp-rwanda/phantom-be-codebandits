@@ -18,6 +18,7 @@ describe('ROLES AND PERMISSIONS', async () => {
 		}
 	});
 	let token;
+	let userId;
 	describe('Driver accessing routes', async () => {
 		before(async () => {
 			const password = await bcrypt.hash('Andela@1234', 5);
@@ -30,6 +31,7 @@ describe('ROLES AND PERMISSIONS', async () => {
 			};
 			const saveUser = User.create(user);
 			await saveUser.save();
+			userId = saveUser.id;
 			const res = await chai.request(app).post('/api/v1/accounts/login').send({
 				email: 'driver@gmail.com',
 				password: 'Andela@1234',
@@ -50,24 +52,10 @@ describe('ROLES AND PERMISSIONS', async () => {
 				.set('Authorization', `Bearer ${token}`);
 			expect(res).to.have.status(200);
 		});
-		it('Return error for updating drivers', async () => {
-			const res = await chai
-				.request(app)
-				.put('/api/v1/drivers')
-				.set('Authorization', `Bearer ${token}`);
-			expect(res).to.have.status(401);
-		});
 		it('Return unauthorized for creating driver', async () => {
 			const res = await chai
 				.request(app)
 				.post('/api/v1/drivers')
-				.set('Authorization', `Bearer ${token}`);
-			expect(res).to.have.status(401);
-		});
-		it('Return unauthorized for deleting driver', async () => {
-			const res = await chai
-				.request(app)
-				.delete('/api/v1/drivers')
 				.set('Authorization', `Bearer ${token}`);
 			expect(res).to.have.status(401);
 		});
@@ -86,7 +74,7 @@ describe('ROLES AND PERMISSIONS', async () => {
 			expect(res).to.have.status(401);
 		});
 	});
-	describe('Operator accessing routes', async () => {
+	describe('Operator accessing drivers', async () => {
 		before(async () => {
 			const password = await bcrypt.hash('Andela@1234', 5);
 			const user = {
@@ -110,32 +98,12 @@ describe('ROLES AND PERMISSIONS', async () => {
 				.get('/api/v1/users')
 				.set('Authorization', `Bearer ${token}`);
 			expect(res).to.have.status(200);
+			expect(res.body).to.have.property('data');
 		});
-		it('Should allow edit of own profile', async () => {
+		it('Should allow edit of driver profile', async () => {
 			const res = await chai
 				.request(app)
 				.put('/api/v1/drivers/123')
-				.set('Authorization', `Bearer ${token}`);
-			expect(res).to.have.status(200);
-		});
-		it('Return error for updating drivers', async () => {
-			const res = await chai
-				.request(app)
-				.put('/api/v1/drivers')
-				.set('Authorization', `Bearer ${token}`);
-			expect(res).to.have.status(200);
-		});
-		it('Return unauthorized for creating driver', async () => {
-			const res = await chai
-				.request(app)
-				.post('/api/v1/drivers')
-				.set('Authorization', `Bearer ${token}`);
-			expect(res).to.have.status(200);
-		});
-		it('Return unauthorized for deleting driver', async () => {
-			const res = await chai
-				.request(app)
-				.delete('/api/v1/drivers')
 				.set('Authorization', `Bearer ${token}`);
 			expect(res).to.have.status(200);
 		});
@@ -152,6 +120,20 @@ describe('ROLES AND PERMISSIONS', async () => {
 				.delete('/api/v1/users')
 				.set('Authorization', `Bearer ${token}`);
 			expect(res).to.have.status(500);
+		});
+		it('Be allowed to delete an operator', async () => {
+			const res = await chai
+				.request(app)
+				.delete('/api/v1/users/2345567')
+				.set('Authorization', `Bearer ${token}`);
+			expect(res).to.have.status(404);
+		});
+		it('Delete a driver', async () => {
+			const res = await chai
+				.request(app)
+				.delete(`/api/v1/users/${userId}`)
+				.set('Authorization', `Bearer ${token}`);
+			expect(res).to.have.status(200);
 		});
 	});
 });

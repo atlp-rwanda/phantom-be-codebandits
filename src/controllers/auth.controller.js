@@ -1,8 +1,8 @@
 import bcrypt from 'bcrypt';
-import jwt from 'jsonwebtoken';
 import 'dotenv/config';
-import User from '../models/user.js';
+import jwt from 'jsonwebtoken';
 import RefreshToken, { RefreshTokenSchema } from '../models/refreshToken.js';
+import User from '../models/user.js';
 import handleResponse from './handleResponse.js';
 
 const AuthHandler = async (req, res) => {
@@ -17,7 +17,7 @@ const AuthHandler = async (req, res) => {
 			const accessToken = jwt.sign(
 				{ id: user.id, role: user.role },
 				process.env.ACCESS_TOKEN_SECRET,
-				{ expiresIn: '120s' }
+				{ expiresIn: '600s' }
 			);
 			const oldToken = await RefreshToken.findOneBy({ user });
 			if (oldToken) await oldToken.remove();

@@ -9,6 +9,8 @@
  * @swagger
  * /api/v1/users:
  *  get:
+ *      security:
+ *         - Token: []
  *      summary: Get all users from the database
  *      description: Expect a list of all users in the database
  *      tags:
@@ -48,7 +50,11 @@
  *                          password:
  *                              required: true
  *                              type: string
- *                              example: 1234
+ *                              example: Andela@1234
+ *                          role:
+ *                              required: true
+ *                              type: string
+ *                              example: operator
  *
  *      responses:
  *          201:
