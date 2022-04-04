@@ -17,5 +17,9 @@
 	"you need to login first": "ugomba kubanza kwinjira",
 	"Unauthorized": "Nta burenganzira ubifitiye",
 	"Password or email is invalid": "Ijambo banga cyangwa imeri ntabwo byemewe",
-	"logout successful": "Gusohoka byagenze neza"
+	"logout successful": "Gusohoka byagenze neza",
+	"email_found": "Email yabonetse",
+	"email_not_found": "Email ntishoboye kuboneka",
+	"Email found": "Email found",
+	"link_sent": "Email yo ku resting ijambo banga yoherejwe, wareba mu ikarito yawe"
 }
