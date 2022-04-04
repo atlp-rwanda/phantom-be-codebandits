@@ -9,7 +9,7 @@ const errorMessage = [
 const errLogger = (error, req, res, next) => {
 	let at = error.stack.split(/\r\n|\r|\n/)[1];
 	console.error(`${error.message}- happended at \n ${at}`);
-
+	/* c8 ignore next 5 */
 	if (error instanceof SyntaxError && error.status === 400 && 'body' in error) {
 		return res
 			.status(406)

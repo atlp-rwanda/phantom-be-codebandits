@@ -1,11 +1,9 @@
-import dotenv from 'dotenv';
 import chai from 'chai';
 import chaiHttp from 'chai-http';
-import DataSource from '../../data-source.js';
-import logger from '../../configs/winston.js';
+import 'dotenv/config';
 import server from '../../app.js';
-
-dotenv.config();
+import logger from '../../configs/winston.js';
+import DataSource from '../../data-source.js';
 
 chai.use(chaiHttp);
 chai.should();

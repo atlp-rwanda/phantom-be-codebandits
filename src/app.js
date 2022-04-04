@@ -13,7 +13,6 @@ import { AppDataSource } from './data-source.js';
 import apiRouter from './routes/apiRouter.js';
 import indexRouter from './routes/indexRouter.js';
 import errLogger from './utils/errorLogger.js';
-import router from './routes/userRouter.js';
 
 const swaggerSpec = swaggerJSDoc(options);
 const __dirname = path.resolve();
@@ -49,9 +48,8 @@ AppDataSource.initialize()
 			logger.info(`app is listening on port ${PORT}`);
 		});
 	})
-	.catch((error) => {
+	.catch(() => {
 		/* c8 ignore next 5 */
-		logger.error(error.message);
 		logger.error(
 			"The server couldn't be started. The database is not connected"
 		);
