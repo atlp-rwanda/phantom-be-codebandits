@@ -8,5 +8,9 @@
 	"notFound": "Ubusabe ntibubonetse",
 	"serverError": "Ni ikibazo cyo kuri seriveri",
 	"user_conflict": "Konti ifite iyi email isanzwe muri sisitemu",
-	"bad_data": "Amakuru mwatanze ntabwo yuzuye"
+	"bad_data": "Amakuru mwatanze ntabwo yuzuye",
+	"email_found": "Email yabonetse",
+	"email_not_found": "Email ntishoboye kuboneka",
+	"Email found": "Email found",
+	"link_sent": "Email yo ku resting ijambo banga yoherejwe, wareba mu ikarito yawe"
 }

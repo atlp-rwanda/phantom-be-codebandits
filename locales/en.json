@@ -8,5 +8,11 @@
 	"serverError": "Server error",
 	"Welcome": "Welcome",
 	"user_conflict": "User exists with this email exists",
-	"bad_data": "Invalid data"
+	"bad_data": "Invalid data",
+	"email_notExit": "Email does not exist",
+	"email_required": "Email is required",
+	"email_not_valid": "Email must be valid",
+	"email_found": "Email was found",
+	"email_not_found": "Email not found",
+	"link_sent": "Password reset link has been sent to your email"
 }

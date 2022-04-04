@@ -11,6 +11,7 @@ import logger from './configs/winston.js';
 import { AppDataSource } from './data-source.js';
 import apiRouter from './routes/apiRouter.js';
 import indexRouter from './routes/indexRouter.js';
+import router from './routes/userRouter.js';
 
 const swaggerSpec = swaggerJSDoc(options);
 const __dirname = path.resolve();
@@ -25,6 +26,7 @@ app.use(express.urlencoded({ extended: true }));
 app.use(i18n.init);
 
 app.use('/api/v1', apiRouter);
+app.use('/api/v1', router);
 
 app.use(
 	'/docs',

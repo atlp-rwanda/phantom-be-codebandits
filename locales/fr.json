@@ -8,5 +8,9 @@
 	"serverError": "Server errer",
 	"notFound": "Demande introuvable",
 	"bad_data": "Données invalides",
-	"user_conflict": "L'utilisateur avec cet email existe"
+	"user_conflict": "L'utilisateur avec cet email existe",
+	"email_found": "Email introuvable",
+	"email_not_found": "Email Demande introuvable",
+	"Email found": "Email found",
+	"link_sent": "Le lien de réinitialisation du mot de passe a été envoyé à votre adresse e-mail"
 }

@@ -10,6 +10,8 @@ export class User extends BaseEntity {
 	email;
 
 	password;
+
+	resentLink;
 }
 
 export const UserSchema = new EntitySchema({
@@ -31,6 +33,10 @@ export const UserSchema = new EntitySchema({
 		email: {
 			type: 'varchar',
 			unique: true,
+		},
+		resentLink: {
+			type: String,
+			default: '',
 		},
 	},
 });

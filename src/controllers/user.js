@@ -1,5 +1,6 @@
 import { User } from '../models/user.js';
 import handleResponse from './handleResponse.js';
+// import Jwt  from 'jsonwebtoken';
 
 export const GetUsers = async (_, res) => {
 	const users = await User.find();
@@ -17,3 +18,10 @@ export const CreateUser = async (req, res) => {
 		return handleResponse(res, 400, { message: res.__('bad_data') });
 	}
 };
+
+// export const forgotPassword = async (req, res) => {
+// 	const email = User.findOneBy({ email: req.body.email });
+// 	if (!email) return handleResponse(res, 404, res.__('emailNotExit'));
+
+// 	return 0;
+// };
