@@ -16,3 +16,13 @@ export const CreateUser = async (req, res) => {
 
 export const testPermissionUser = async (req, res) =>
 	handleResponse(res, 200, 'Getting user');
+
+export const deleteUser = async (req, res) => {
+	const { id } = req.params;
+	const userExist = await User.findOneBy({ id });
+	if (userExist) {
+		await userExist.remove();
+		return handleResponse(res, 200, { message: 'user is deleted' });
+	}
+	return handleResponse(res, 404, { message: res.__('notFound') });
+};

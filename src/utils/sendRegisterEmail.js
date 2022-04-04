@@ -1,8 +1,8 @@
 import nodemailer from 'nodemailer';
 import logger from '../configs/winston.js';
-import renderEmail from '../templates/emailMessage.js';
+import renderEmail from '../templates/registerEmail.js';
 
-const sendResetEmail = async (link, email, user) => {
+const sendRegisterEmail = async (link, name, email, password) => {
 	const testAccount = await nodemailer.createTestAccount();
 
 	const emailOptions = {
@@ -37,11 +37,11 @@ const sendResetEmail = async (link, email, user) => {
 		from: 'phantomcodebandits@gmail.com',
 		to: email,
 		envelope: {
-			from: `Phantom Reset Password <phantomcodebandits@gmail.com>`,
-			to: `${user.firstName} <${email}>`,
+			from: `Phantom sign in <phantomcodebandits@gmail.com>`,
+			to: `${name} <${email}>`,
 		},
-		subject: 'Password reset request',
-		html: renderEmail(link),
+		subject: 'Sign in into Phantom',
+		html: renderEmail(link, email, password),
 		text: link,
 	};
 
@@ -60,4 +60,4 @@ const sendResetEmail = async (link, email, user) => {
 	}
 };
 
-export default sendResetEmail;
+export default sendRegisterEmail;

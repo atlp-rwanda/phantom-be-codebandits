@@ -39,6 +39,7 @@ app.use(
 
 app.use('/api/v1', apiRouter);
 app.use('/', indexRouter);
+
 app.use(errLogger);
 AppDataSource.initialize()
 	.then(async () => {

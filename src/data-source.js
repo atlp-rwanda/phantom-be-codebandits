@@ -1,8 +1,10 @@
 /* eslint-disable */
 import 'reflect-metadata';
 import { DataSource } from 'typeorm';
+import { DriverSchema } from './driverApp/models.js';
 import { UserSchema } from './models/user.js';
 import { RefreshTokenSchema } from './models/refreshToken.js';
+import { OperatorSchema } from './operatorApp/models.js';
 import { ResetTokenSchema } from './userApp/models.js';
 
 let options = {
@@ -14,7 +16,13 @@ let options = {
 	database: process.env.DB,
 	synchronize: true,
 	logging: false,
-	entities: [UserSchema, RefreshTokenSchema, ResetTokenSchema],
+	entities: [
+		UserSchema,
+		DriverSchema,
+		OperatorSchema,
+		RefreshTokenSchema,
+		ResetTokenSchema,
+	],
 	migrations: ['./migration/*.js'],
 	subscribers: [],
 	cli: {

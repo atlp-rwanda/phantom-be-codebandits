@@ -1,5 +1,5 @@
 import bcrypt from 'bcrypt';
-import { body, validationResult } from 'express-validator';
+import { body } from 'express-validator';
 import User from '../models/user.js';
 
 export const createUserValidation = () => [
@@ -24,13 +24,3 @@ export const createUserValidation = () => [
 	body('lastName', 'This too is required').notEmpty(),
 	body('role', 'This too is required').notEmpty(),
 ];
-
-export const validate = (req, res, next) => {
-	const errors = validationResult(req);
-	if (errors.isEmpty()) return next();
-	const extractedErrors = {};
-	errors.array().forEach((err) => {
-		extractedErrors[err.param] = err.msg;
-	});
-	return res.status(400).json({ extractedErrors });
-};
