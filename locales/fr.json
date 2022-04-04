@@ -14,5 +14,7 @@
 	"user_conflict": "L'utilisateur avec cet email existe",
 	"user does not exist": "l'utilisateur n'existe pas",
 	"wrong email or password": "mauvais email ou password",
-	"you need to login first": "tu dois d'abord te connecter"
+	"you need to login first": "tu dois d'abord te connecter",
+	"Unauthorized": "L'accès non autorisé",
+	"Password or email is invalid": "Le mot de passe ou l'e-mail est invalide"
 }

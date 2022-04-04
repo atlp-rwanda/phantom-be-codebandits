@@ -32,7 +32,7 @@ describe('LOGIN', () => {
 					firstName: 'Patrick',
 					lastName: 'Shema',
 					email: 'patrickshema@gmail.com',
-					password: 'patrickshema',
+					password: 'Andela@123',
 					role: 'admin',
 				})
 				.end((err, res) => {
@@ -42,7 +42,7 @@ describe('LOGIN', () => {
 						.post('/api/v1/accounts/login')
 						.send({
 							email: 'patrickshema@gmail.com',
-							password: 'patrickshema',
+							password: 'Andela@123',
 						})
 						.end((err, res) => {
 							res.should.have.status(200);
@@ -61,7 +61,7 @@ describe('LOGIN', () => {
 				.post('/api/v1/accounts/login')
 				.send({
 					email: 'patrickshema@gmail.com',
-					password: 'patrickshema',
+					password: 'Andela@123',
 				})
 				.end((err, res) => {
 					res.should.have.status(200);
@@ -82,7 +82,7 @@ describe('LOGIN', () => {
 					password: 'ericngabo',
 				})
 				.end((err, res) => {
-					res.should.have.status(404);
+					res.should.have.status(400);
 					res.body.should.be.a('object');
 					res.body.should.have.property('data');
 					res.body.data.should.have.property('message');
@@ -100,7 +100,7 @@ describe('LOGIN', () => {
 					password: 'ericngabo',
 				})
 				.end((err, res) => {
-					res.should.have.status(401);
+					res.should.have.status(400);
 					res.body.should.be.a('object');
 					res.body.should.have.property('data');
 					res.body.data.should.have.property('message');
