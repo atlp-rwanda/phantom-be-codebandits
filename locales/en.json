@@ -17,5 +17,10 @@
 	"you need to login first": "you need to login first",
 	"Unauthorized": "Unauthorized access",
 	"Password or email is invalid": "Password or email is invalid",
-	"logout successful": "Successfully logged out"
+	"logout successful": "Successfully logged out",
+	"email_notExit": "Email does not exist",
+	"email_not_valid": "Email must be valid",
+	"email_found": "Email was found",
+	"email_not_found": "Email not found",
+	"link_sent": "Password reset link has been sent to your email"
 }

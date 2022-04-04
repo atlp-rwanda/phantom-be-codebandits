@@ -13,6 +13,7 @@ import { AppDataSource } from './data-source.js';
 import apiRouter from './routes/apiRouter.js';
 import indexRouter from './routes/indexRouter.js';
 import errLogger from './utils/errorLogger.js';
+import router from './routes/userRouter.js';
 
 const swaggerSpec = swaggerJSDoc(options);
 const __dirname = path.resolve();
@@ -28,6 +29,8 @@ app.use(cookieParser());
 app.use(express.static(path.join(__dirname, 'public')));
 app.use(express.urlencoded({ extended: true }));
 app.use(i18n.init);
+
+app.use('/api/v1', apiRouter);
 
 app.use(
 	'/docs',
