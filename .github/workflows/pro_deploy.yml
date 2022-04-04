@@ -27,6 +27,9 @@ jobs:
       DB_PASS: test
       DB_PORT: "5432"
       DB: test
+      ACCESS_TOKEN_SECRET: 27219441075f8cbcc77b578
+      REFRESH_TOKEN_SECRET: c5bd3f757952747f4a64a31a
+      JWT_REFRESH_EXPIRATION: 7000
     steps:
       - uses: actions/checkout@v2
       - uses: actions/setup-node@v2

@@ -8,5 +8,12 @@
 	"serverError": "Server error",
 	"Welcome": "Welcome",
 	"user_conflict": "User exists with this email exists",
-	"bad_data": "Invalid data"
+	"bad_data": "Invalid data",
+	"email_required": "Email is required",
+	"email_invalid": "Invalid email",
+	"password_required": "Password is required",
+	"user does not exist": "user does not exist",
+	"wrong email or password": "wrong email or password",
+	"you need to login first": "you need to login first",
+	"Server error": "Server error"
 }

@@ -2,6 +2,7 @@
 import 'reflect-metadata';
 import { DataSource } from 'typeorm';
 import { UserSchema } from './models/user.js';
+import { RefreshTokenSchema } from './models/refreshToken.js';
 
 let options = {
 	type: 'postgres',
@@ -12,7 +13,7 @@ let options = {
 	database: process.env.DB,
 	synchronize: true,
 	logging: false,
-	entities: [UserSchema],
+	entities: [UserSchema, RefreshTokenSchema],
 	migrations: ['./migration/*.js'],
 	subscribers: [],
 	cli: {

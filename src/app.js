@@ -4,6 +4,7 @@ import express from 'express';
 import path from 'path';
 import swaggerJSDoc from 'swagger-jsdoc';
 import swaggerUi from 'swagger-ui-express';
+import cookieParser from 'cookie-parser';
 import i18n from './configs/i18n.js';
 import reqLogger from './configs/reqLogger.js';
 import options, { customizationOptions } from './configs/swagger.js';
@@ -22,11 +23,10 @@ const app = express();
 app.use(cors());
 app.use(reqLogger);
 app.use(express.json());
+app.use(cookieParser());
 app.use(express.static(path.join(__dirname, 'public')));
 app.use(express.urlencoded({ extended: true }));
 app.use(i18n.init);
-
-app.use('/api/v1', apiRouter);
 
 app.use(
 	'/docs',
@@ -34,14 +34,13 @@ app.use(
 	swaggerUi.setup(swaggerSpec, customizationOptions, { explorer: true })
 );
 
-app.use('/', indexRouter);
-
 app.use('/api/v1', apiRouter);
 app.use('/', indexRouter);
 AppDataSource.initialize()
 	.then(async () => {
 		logger.info('Postgres database connected');
 		app.listen(PORT, () => {
+			app.emit('started');
 			logger.info(`app is listening on port ${PORT}`);
 		});
 	})
