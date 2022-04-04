@@ -5,7 +5,7 @@
 	"description": "backend repository for phantom app",
 	"main": "app.js",
 	"scripts": {
-		"test": "cross-env NODE_ENV=test c8 --check-coverage mocha src/**/tests/*.test.js --timeout 10000 --exit",
+		"test": "cross-env NODE_ENV=test c8 --check-coverage mocha src/**/tests/*.test.js --timeout 20000 --exit",
 		"coverage": "cross-env NODE_ENV=test c8 --check-coverage -r lcov npm t",
 		"prepare": "husky install",
 		"start": "node src/app.js",

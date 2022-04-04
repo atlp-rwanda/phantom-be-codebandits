@@ -1,5 +1,5 @@
-export const emailMessage = (emailData) => {
-	const SendEmail = `<!doctype html>
+const renderEmail = (link) => {
+	const template = `<!doctype html>
     <html lang="en-US">
     
     <head>
@@ -24,7 +24,7 @@ export const emailMessage = (emailData) => {
                         <tr>
                             <td style="text-align:center;">
                                 <a href="#" title="logo" target="_blank">
-                                    <img width="100" src="https://res.cloudinary.com/feyton/image/upload/v1645611696/Codebandits/phantom_lkpwx7.png" title="logo" alt="logo">
+                                    <img width="200" src="https://res.cloudinary.com/feyton/image/upload/v1645611696/Codebandits/phantom_lkpwx7.png" title="logo" alt="logo">
                                 </a>
                             </td>
                         </tr>
@@ -42,12 +42,18 @@ export const emailMessage = (emailData) => {
                                             <h1 style="color:#1e1e2d; font-weight:500; margin:0;font-size:32px;font-family:'Rubik',sans-serif;">You have requested to reset your password</h1>
                                             <span style="display:inline-block; vertical-align:middle; margin:29px 0 26px; border-bottom:1px solid #cecece; width:100px;"></span>
                                             <p style="color:#455056; font-size:15px;line-height:24px; margin:0;">
-                                                We cannot simply send you your old password. A unique link to reset your password has been generated for you. To reset your password, click the following link and follow the instructions.
+                                           To reset your password, click a button below. If it doesnt work, copy the link to the browser and follow the instructions.
                                             </p>
-                                            <a href="${process.env.BASE_URL}/api-docs/${emailData}" style="background:#1B73E8;text-decoration:none !important; font-weight:500; margin-top:35px; color:#fff;text-transform:uppercase; font-size:14px;padding:10px 24px;display:inline-block;border-radius:50px;">Reset
+                                            <a href="${link}" style="background:#1B73E8;text-decoration:none !important; font-weight:500; margin-top:35px; color:#fff;text-transform:uppercase; font-size:14px;padding:10px 24px;display:inline-block;border-radius:50px;">Reset
                                                 Password for your phantom account</a> 
                                         </td>
                                     </tr>
+                                    <tr>
+                                    <td>
+                                        <br>
+                                        <small>${link}</small>
+                                    </td>
+                                </tr>
                                     <tr>
                                         <td style="height:40px;">&nbsp;</td>
                                     </tr>
@@ -66,7 +72,7 @@ export const emailMessage = (emailData) => {
     </body>
     
     </html>`;
-	return SendEmail;
+	return template;
 };
 
-export default emailMessage;
+export default renderEmail;

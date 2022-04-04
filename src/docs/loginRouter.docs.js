@@ -1,8 +1,8 @@
 /**
  * @openapi
  * tags:
- *  name: Authentication
- *  description: Routes for authentication
+ *  name: Accounts
+ *  description: Routes for authentication and account management
  */
 
 /**
@@ -12,7 +12,7 @@
  *      summary: Login into phantom
  *      description: The user is able to login into phantom
  *      tags:
- *          - Login
+ *          - Accounts
  *      requestBody:
  *          required: true
  *          content:
@@ -30,9 +30,22 @@
  *
  *      responses:
  *          200:
- *              description: login is successful
+ *              description: Login is successful
  *          404:
- *              description: user does not exist
+ *              description: User does not exist
  *          400:
- *              description: wrong email or password
+ *              description: Wrong email or password
+ */
+
+/**
+ * @swagger
+ * /api/v1/accounts/logout:
+ *  get:
+ *      summary: Logout from phantom
+ *      description: The
+ *      tags:
+ *          - Accounts
+ *      responses:
+ *          200:
+ *              description: successfully logged out
  */

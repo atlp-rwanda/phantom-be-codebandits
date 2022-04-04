@@ -1,9 +1,6 @@
+import 'dotenv/config';
 import jwt from 'jsonwebtoken';
 import { BaseEntity, EntitySchema } from 'typeorm';
-
-import dotenv from 'dotenv';
-
-dotenv.config();
 
 const jwtRefreshExpiration = process.env.JWT_REFRESH_EXPIRATION;
 
