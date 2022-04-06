@@ -7,6 +7,13 @@
 	"sent": "Igikorwa cyagenze neza",
 	"notFound": "Ubusabe ntibubonetse",
 	"serverError": "Ni ikibazo cyo kuri seriveri",
-	"user_conflict": "Konti ifite iyi email isanzwe muri sisitemu",
-	"bad_data": "Amakuru mwatanze ntabwo yuzuye"
+	"user_conflict": "Konti ifite iyi imeri isanzwe muri sisitemu",
+	"bad_data": "Amakuru mwatanze ntabwo yuzuye",
+	"email_required": "Imeri irakenewe",
+	"email_invalid": "imeri ntiyemewe",
+	"password_required": "Ijambobanga rirakenewe",
+	"user does not exist": "iyi konti ntayihari",
+	"wrong email or password": "mwibeshye imeri cyangwa umubare w'ibanga",
+	"you need to login first": "ugomba kubanza kwinjira",
+	"Server error": "Server error"
 }

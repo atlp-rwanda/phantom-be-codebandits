@@ -5,8 +5,14 @@
 	"fail": "échoué",
 	"message": "message",
 	"sent": "Envoyé",
-	"serverError": "Server errer",
+	"serverError": "erreur du serveur",
 	"notFound": "Demande introuvable",
 	"bad_data": "Données invalides",
-	"user_conflict": "L'utilisateur avec cet email existe"
+	"email_required": "Email est requis",
+	"email_invalid": "Email est invalide",
+	"password_required": "Mot de passe is requis",
+	"user_conflict": "L'utilisateur avec cet email existe",
+	"user does not exist": "l'utilisateur n'existe pas",
+	"wrong email or password": "mauvais email ou password",
+	"you need to login first": "tu dois d'abord te connecter"
 }

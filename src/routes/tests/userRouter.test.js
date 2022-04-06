@@ -3,7 +3,6 @@ import chaiHttp from 'chai-http';
 import server from '../../app.js';
 import logger from '../../configs/winston.js';
 import DataSource from '../../data-source.js';
-import { User } from '../../models/user.js';
 
 chai.use(chaiHttp);
 chai.should();
@@ -11,9 +10,8 @@ chai.should();
 describe('userRouter', () => {
 	before(async () => {
 		try {
-			await DataSource.synchronize();
-
-			await User.clear();
+			await DataSource.query('TRUNCATE "RefreshToken" CASCADE');
+			await DataSource.query('TRUNCATE "User" CASCADE');
 		} catch (error) {
 			logger.error(error.message);
 		}
