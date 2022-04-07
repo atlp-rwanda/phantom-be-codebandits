@@ -29,7 +29,7 @@ describe('REFRESH', () => {
 					firstName: 'Patrick',
 					lastName: 'Shema',
 					email: 'patrickshema@gmail.com',
-					password: 'patrickshema',
+					password: 'Andela@123',
 					role: 'admin',
 				})
 				.end((err, res) => {
@@ -39,7 +39,7 @@ describe('REFRESH', () => {
 						.post('/api/v1/accounts/login')
 						.send({
 							email: 'patrickshema@gmail.com',
-							password: 'patrickshema',
+							password: 'Andela@123',
 						})
 						.end((err, res) => {
 							res.should.have.status(200);

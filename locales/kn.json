@@ -15,5 +15,7 @@
 	"user does not exist": "iyi konti ntayihari",
 	"wrong email or password": "mwibeshye imeri cyangwa umubare w'ibanga",
 	"you need to login first": "ugomba kubanza kwinjira",
-	"Server error": "Server error"
+	"Server error": "Server error",
+	"Unauthorized": "Nta burenganzira ubifitiye",
+	"Password or email is invalid": "Ijambo banga cyangwa imeri ntabwo byemewe"
 }

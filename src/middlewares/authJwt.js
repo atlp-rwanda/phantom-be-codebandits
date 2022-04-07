@@ -1,5 +1,5 @@
-import jwt from 'jsonwebtoken';
 import dotenv from 'dotenv';
+import jwt from 'jsonwebtoken';
 
 dotenv.config();
 
@@ -10,7 +10,7 @@ const verifyToken = (req, res, next) => {
 		return res.status(401).send({
 			status: 'fail',
 			code: 401,
-			message: 'Unauthorized',
+			message: 'Unauthorized with token',
 		});
 
 	jwt.verify(token, process.env.ACCESS_TOKEN_SECRET, (err, user) => {

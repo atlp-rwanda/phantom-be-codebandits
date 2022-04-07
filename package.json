@@ -10,7 +10,7 @@
 		"prepare": "husky install",
 		"start": "node src/app.js",
 		"dev": "nodemon src/app.js",
-		"lint": "eslint \"**/*.js\" --max-warnings=0",
+		"lint": "eslint \"**/*.js\" --fix --max-warnings=0",
 		"format": "prettier --write ./**/*.{js,jsx,json}",
 		"lint-fix": "eslint \"**/*.js\" --fix"
 	},
@@ -46,6 +46,7 @@
 	},
 	"dependencies": {
 		"bcrypt": "^5.0.1",
+		"accesscontrol": "^2.2.1",
 		"body-parser": "^1.19.2",
 		"c8": "^7.11.0",
 		"chai-http": "^4.3.0",

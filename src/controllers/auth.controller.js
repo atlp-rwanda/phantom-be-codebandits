@@ -8,7 +8,9 @@ import handleResponse from './handleResponse.js';
 const AuthHandler = async (req, res) => {
 	const user = await User.findOneBy({ email: req.body.email });
 	if (!user) {
-		return handleResponse(res, 404, { message: res.__('user does not exist') });
+		return handleResponse(res, 400, {
+			message: res.__('Password or email is invalid'),
+		});
 	}
 	try {
 		if (await bcrypt.compare(req.body.password, user.password)) {
@@ -30,8 +32,8 @@ const AuthHandler = async (req, res) => {
 				access_token: accessToken,
 			});
 		}
-		return handleResponse(res, 401, {
-			message: res.__('wrong email or password'),
+		return handleResponse(res, 400, {
+			message: res.__('Password or email is invalid'),
 		});
 		/* c8 ignore next 3 */
 	} catch (err) {

@@ -1,10 +1,10 @@
+import cookieParser from 'cookie-parser';
 import cors from 'cors';
 import 'dotenv/config';
 import express from 'express';
 import path from 'path';
 import swaggerJSDoc from 'swagger-jsdoc';
 import swaggerUi from 'swagger-ui-express';
-import cookieParser from 'cookie-parser';
 import i18n from './configs/i18n.js';
 import reqLogger from './configs/reqLogger.js';
 import options, { customizationOptions } from './configs/swagger.js';
@@ -12,6 +12,7 @@ import logger from './configs/winston.js';
 import { AppDataSource } from './data-source.js';
 import apiRouter from './routes/apiRouter.js';
 import indexRouter from './routes/indexRouter.js';
+import errLogger from './utils/errorLogger.js';
 
 const swaggerSpec = swaggerJSDoc(options);
 const __dirname = path.resolve();
@@ -36,6 +37,7 @@ app.use(
 
 app.use('/api/v1', apiRouter);
 app.use('/', indexRouter);
+app.use(errLogger);
 AppDataSource.initialize()
 	.then(async () => {
 		logger.info('Postgres database connected');
