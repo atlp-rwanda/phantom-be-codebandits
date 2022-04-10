@@ -14,7 +14,7 @@ describe('LOGIN', () => {
 	before((done) => {
 		server.on('started', async () => {
 			try {
-				await DataSource.synchronize();
+				await DataSource.query('TRUNCATE "User" CASCADE');
 			} catch (error) {
 				logger.error(error.message);
 			} finally {

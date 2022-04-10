@@ -9,7 +9,7 @@ const AuthHandler = async (req, res) => {
 	const user = await User.findOneBy({ email: req.body.email });
 	if (!user) {
 		return handleResponse(res, 400, {
-			message: res.__('Password or email is invalid'),
+			message: res.__('wrong email or password'),
 		});
 	}
 	try {

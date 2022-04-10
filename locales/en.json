@@ -15,7 +15,7 @@
 	"user does not exist": "user does not exist",
 	"wrong email or password": "wrong email or password",
 	"you need to login first": "you need to login first",
-	"Server error": "Server error",
 	"Unauthorized": "Unauthorized access",
-	"Password or email is invalid": "Password or email is invalid"
+	"Password or email is invalid": "Password or email is invalid",
+	"logout successful": "Successfully logged out"
 }

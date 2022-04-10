@@ -7,20 +7,7 @@
 
 /**
  * @swagger
- * /api/v1/logout:
- *  get:
- *      summary: Logout from phantom
- *      description: The
- *      tags:
- *          - Logout
- *      responses:
- *          200:
- *              description: successfully logged out
- */
-
-/**
- * @swagger
- * /api/v1/login:
+ * /api/v1/accounts/login:
  *  post:
  *      summary: Login into phantom
  *      description: The user is able to login into phantom
