@@ -1,5 +1,10 @@
 #!/bin/sh
 . "$(dirname "$0")/_/husky.sh"
-npm run lint-fix
+
+npm run lint-fix || 
+(
+  echo 'Check for linting errors';
+  false;
+)
 npx lint-staged
 git add .

@@ -17,5 +17,14 @@
 	"you need to login first": "ugomba kubanza kwinjira",
 	"Unauthorized": "Nta burenganzira ubifitiye",
 	"Password or email is invalid": "Ijambo banga cyangwa imeri ntabwo byemewe",
-	"logout successful": "Gusohoka byagenze neza"
+	"logout successful": "Gusohoka byagenze neza",
+	"email_found": "Email yabonetse",
+	"email_notExit": "Email ntishoboye kuboneka",
+	"link_sent": "Email yo ku guhindura ijambo banga yoherejwe",
+	"successifully_reseted": "Ijambobanga ryahinduwe neza",
+	"email_not_found": "Email ntibashije kuboneka muri database",
+	"token_invalid": "wakoresheje Ikimenyetso kitemewe cyangwa cyararangiye",
+	"A strong password required": "A strong password required",
+	"strong_password": "koresha Ijambobanga rikomeye",
+	"email_not_valid": "email_not_valid"
 }

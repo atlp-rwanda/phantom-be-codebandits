@@ -17,5 +17,12 @@
 	"Password or email is invalid": "Le mot de passe ou l'e-mail est invalide",
 	"wrong email or password": "Mauvais email ou mot de passe",
 	"you need to login first": "Tu dois d'abord te connecter",
-	"logout successful": "Déconnecté avec succès"
+	"logout successful": "Déconnecté avec succès",
+	"email_found": "Email introuvable",
+	"email_notExit": "Email Demande introuvable",
+	"email_not_found": "Email non trouvé",
+	"link_sent": "Le lien de réinitialisation du mot de passe a été envoyé à votre adresse e-mail",
+	"successifully_reseted": "Mot de passe réinitialisé avec succès",
+	"strong_password": "utiliser un mot de passe fort",
+	"token_invalid": "Jeton invalide ou expiré"
 }

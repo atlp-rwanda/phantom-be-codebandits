@@ -10,4 +10,5 @@ const validate = (req, res, next) => {
 	});
 	return handleResponse(res, 400, extractedErrors);
 };
+
 export default validate;

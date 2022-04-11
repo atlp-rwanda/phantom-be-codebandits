@@ -29,6 +29,8 @@ app.use(express.static(path.join(__dirname, 'public')));
 app.use(express.urlencoded({ extended: true }));
 app.use(i18n.init);
 
+app.use('/api/v1', apiRouter);
+
 app.use(
 	'/docs',
 	swaggerUi.serve,
@@ -46,9 +48,8 @@ AppDataSource.initialize()
 			logger.info(`app is listening on port ${PORT}`);
 		});
 	})
-	.catch((error) => {
+	.catch(() => {
 		/* c8 ignore next 5 */
-		logger.error(error.message);
 		logger.error(
 			"The server couldn't be started. The database is not connected"
 		);
