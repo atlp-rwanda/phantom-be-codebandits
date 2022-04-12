@@ -45,7 +45,7 @@ describe('driver router tests', () => {
 			.get('/api/v1/drivers')
 			.set('Authorization', `Bearer ${token}`);
 		expect(response).to.have.status(200);
-		expect(response.body.data).to.contain('No users in the database');
+		expect(response.body.data).to.have.length(0);
 	});
 	it('should create a new driver', async () => {
 		driverInfo = {
@@ -67,19 +67,52 @@ describe('driver router tests', () => {
 		createdDriverId = response.body.data.id;
 	});
 	it('should not create a same driver twice', async () => {
-		const responseConflict = await chai
+		const response = await chai
 			.request(app)
 			.post('/api/v1/drivers')
 			.send(driverInfo)
 			.set('Authorization', `Bearer ${token}`);
-		expect(responseConflict).to.have.status(400);
+		expect(response).to.have.status(400);
 	});
 	it('should get a single driver', async () => {
-		const newResponse = await chai
+		const response = await chai
 			.request(app)
 			.get(`/api/v1/drivers/${createdDriverId}`)
 			.set('Authorization', `Bearer ${token}`);
-		expect(newResponse).to.have.status(200);
+		expect(response).to.have.status(200);
+	});
+	it('should edit a driver', async () => {
+		const editInfo = {
+			lastName: 'Samuel',
+			firstName: 'Shyaka',
+			wrongKey: 'nananana',
+			email: 'yvesivad@gmail.com',
+			role: 'admin',
+			mobileNumber: '0788231378',
+		};
+		const response = await chai
+			.request(app)
+			.put(`/api/v1/drivers/${createdDriverId}`)
+			.send(editInfo)
+			.set('Authorization', `Bearer ${token}`);
+		expect(response).to.have.status(200);
+		expect(response.body.data).to.contain('Driver updated successfully');
+	});
+	it('should get updated driver with updated info', async () => {
+		const response = await chai
+			.request(app)
+			.get(`/api/v1/drivers/${createdDriverId}`)
+			.set('Authorization', `Bearer ${token}`);
+		expect(response).to.have.status(200);
+		expect(response.body.data.user)
+			.to.have.property('firstName')
+			.to.equal('Shyaka');
+		expect(response.body.data.user)
+			.to.have.property('lastName')
+			.to.equal('Samuel');
+		expect(response.body.data)
+			.to.have.property('mobileNumber')
+			.to.equal('0788231378');
 	});
 	it('should get all drivers', async () => {
 		const response = await chai

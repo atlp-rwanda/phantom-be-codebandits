@@ -38,5 +38,6 @@
 	"zero_users": "aucun utilisateur dans la base de données",
 	"driver_updated": "Le pilote a été mis à jour avec succès",
 	"national_ID_exist": "L'utilisateur avec l'ID national fourni existe",
-	"license_ID_exist": "L'utilisateur avec la licence fournie existe"
+	"license_ID_exist": "L'utilisateur avec la licence fournie existe",
+	"operator_updated": "Opérateur mis à jour avec succès"
 }

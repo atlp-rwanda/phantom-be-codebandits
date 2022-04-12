@@ -60,7 +60,7 @@ describe('Reset password controllers tests', () => {
 			password: 'Andela@123',
 			firstName: 'test',
 			lastName: 'Andela',
-			role: 'Admin',
+			role: 'admin',
 		});
 		const user = await User.save(newUser);
 		const time = new Date();
@@ -93,7 +93,7 @@ describe('Reset password controllers tests', () => {
 			password: 'Andela@123',
 			firstName: 'test',
 			lastName: 'Andela',
-			role: 'Admin',
+			role: 'admin',
 		});
 		const user = await User.save(newUser);
 		const time = new Date();
@@ -118,7 +118,7 @@ describe('Reset password controllers tests', () => {
 			password: 'Andela@123',
 			firstName: 'test',
 			lastName: 'Andela',
-			role: 'Admin',
+			role: 'admin',
 		});
 		const user = await User.save(newUser);
 		const time = new Date();
@@ -142,7 +142,7 @@ describe('Reset password controllers tests', () => {
 			password: 'Andela@123',
 			firstName: 'test',
 			lastName: 'Andela',
-			role: 'Admin',
+			role: 'admin',
 		});
 		const user = await User.save(newUser);
 		const time = new Date();

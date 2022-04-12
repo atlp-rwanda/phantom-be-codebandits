@@ -4,6 +4,7 @@ const { createLogger, format, transports } = winston;
 const logConfig = {
 	transports: [
 		new transports.Console({
+			/* c-8 ignore next 1 */
 			level: process.env.LOG_LEVEL || 'info',
 			format: format.cli(),
 		}),
