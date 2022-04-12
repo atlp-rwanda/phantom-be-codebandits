@@ -3,13 +3,13 @@ import { BaseEntity, EntitySchema } from 'typeorm';
 export class User extends BaseEntity {
 	id;
 
-	firstName;
-
-	lastName;
-
 	email;
 
 	password;
+
+	firstName;
+
+	lastName;
 
 	role;
 }
@@ -24,17 +24,18 @@ export const UserSchema = new EntitySchema({
 			generated: true,
 			type: 'int',
 		},
+		email: {
+			type: 'varchar',
+			unique: true,
+			required: true,
+		},
+		password: {
+			type: 'varchar',
+		},
 		firstName: {
 			type: 'varchar',
 		},
 		lastName: {
-			type: 'varchar',
-		},
-		email: {
-			type: 'varchar',
-			unique: true,
-		},
-		password: {
 			type: 'varchar',
 		},
 		role: {

@@ -1,5 +1,5 @@
 /* eslint-disable */
-
+import handleResponse from '../controllers/handleResponse.js';
 const errorMessage = [
 	'Something happened on our end. We have been notified',
 	'These things happen sometimes. Try again after after some time.',
