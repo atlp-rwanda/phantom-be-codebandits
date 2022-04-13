@@ -1,9 +1,10 @@
 /* eslint-disable */
 import 'reflect-metadata';
 import { DataSource } from 'typeorm';
+import { BusSchema } from './busApp/models.js';
 import { DriverSchema } from './driverApp/models.js';
-import { UserSchema } from './models/user.js';
 import { RefreshTokenSchema } from './models/refreshToken.js';
+import { UserSchema } from './models/user.js';
 import { OperatorSchema } from './operatorApp/models.js';
 import { ResetTokenSchema } from './userApp/models.js';
 
@@ -22,6 +23,7 @@ let options = {
 		OperatorSchema,
 		RefreshTokenSchema,
 		ResetTokenSchema,
+		BusSchema,
 	],
 	migrations: ['./migration/*.js'],
 	subscribers: [],
