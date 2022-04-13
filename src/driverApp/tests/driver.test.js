@@ -98,6 +98,13 @@ describe('driver router tests', () => {
 			.set('Authorization', `Bearer ${token}`);
 		expect(response).to.have.status(200);
 	});
+	it('should get all drivers with relations', async () => {
+		const response = await chai
+			.request(app)
+			.get('/api/v1/drivers?relation=true')
+			.set('Authorization', `Bearer ${token}`);
+		expect(response).to.have.status(200);
+	});
 	it('should delete a driver', async () => {
 		const deleteResponse = await chai
 			.request(app)

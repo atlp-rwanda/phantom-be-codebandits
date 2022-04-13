@@ -1,11 +1,11 @@
-{::comment} # _Title_: #162836478 Create the signup feature {:/comment}
-{::comment} _description_{:/comment}
+[//]: # _Title_: #162836478 Create the signup feature
+[//]: \_description
 
 ### What does this PR do?
 
-{::comment} Explain the why/what not the how {:/comment}
+[//]: Explain the why/what not the how
 
-{::comment} [what the PR does] {:/comment}
+[//]: [what the PR does]
 
 ### Description of Task to be completed
 
@@ -15,7 +15,7 @@
 
 ### How should this be manually tested?
 
-{::comment} Remember to add the code block {:/comment}
+[//]: Remember to add the code block
 
 ```
 git clone https://github.com/atlp-rwanda/phantom-be-codebandits
@@ -31,10 +31,10 @@ npm run dev
 
 ### Any background context you want to provide?
 
-{::comment} Explain the packages you may have used, some unusual coding patterns you have added and so on {:/comment}
+[//]: Explain the packages you may have used, some unusual coding patterns you have added and so on
 
 ### What are the relevant pivotal tracker stories?
 
-{::comment} ["<Trello card id>"](<"Trello card url">) {:/comment}
+[//]: ["<Trello card id>"](<"Trello card url">)
 
 ### Screenshots (if appropriate)

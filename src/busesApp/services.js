@@ -7,7 +7,7 @@ export const registerBus = async (reqBody) => {
 };
 
 export const findBusByPlate = async (plateNumber) => {
-	const existingBus = await Bus.findOneBy({ plateNumber });
+	const existingBus = await Bus.findByPlate(plateNumber);
 	return existingBus;
 };
 
@@ -16,8 +16,8 @@ export const findBusById = async (id) => {
 	return bus;
 };
 
-export const findBuses = async () => {
-	const buses = await Bus.find();
+export const findBuses = async (options = {}) => {
+	const buses = await Bus.find(options);
 	return buses;
 };
 

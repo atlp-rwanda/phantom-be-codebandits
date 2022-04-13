@@ -1,13 +1,20 @@
 export default {
 	user: {
 		drivers: {
-			'read:any': ['*', '!email', '!password', '!id', '!role'],
+			'read:any': [
+				'*',
+				'!email',
+				'!user.password',
+				'!password',
+				'!id',
+				'!role',
+			],
 		},
 	},
 	driver: {
 		drivers: {
-			'read:own': ['*'],
-			'update:own': ['*', '!email', '!password'],
+			'read:own': ['*', '!user.password'],
+			'update:own': ['*', '!email', '!password', '!user.password'],
 		},
 		buses: {
 			'update:own': ['*'],
@@ -26,7 +33,7 @@ export default {
 		},
 		drivers: {
 			'create:any': ['*'],
-			'read:any': ['*'],
+			'read:any': ['*', '!user.password'],
 			'update:any': ['*'],
 			'delete:any': ['*'],
 		},

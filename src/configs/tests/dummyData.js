@@ -102,6 +102,12 @@ const dataFn = async () => {
 				busType: 'Coaster',
 				seats: '27',
 			},
+			valid2: {
+				plateNumber: 'RAB123A',
+				company: 'Kigali Bus Services',
+				busType: 'Coaster',
+				seats: '27',
+			},
 			edit: {
 				plateNumber: 'RAD558E',
 				busType: 'Coaster',
@@ -110,6 +116,11 @@ const dataFn = async () => {
 		},
 		routes: {
 			valid: {
+				origin: 'Nyanza',
+				destination: 'Nyabugogo',
+				distance: 146,
+			},
+			valid2: {
 				origin: 'Nyanza',
 				destination: 'Nyabugogo',
 				distance: 146,

@@ -2,16 +2,16 @@ import { Router } from 'express';
 import verifyToken from '../middlewares/authJwt.js';
 import CheckPermissionAny from '../middlewares/CheckPermission.js';
 import asyncHandler from '../utils/asyncHandler.js';
-import busValidation from './validations.js';
 import validate from '../utils/validateMiddleware.js';
 import {
-	postBusHandler,
+	deleteBusHandler,
 	getBusHandler,
 	getSingleBusHandler,
+	postBusHandler,
 	putBusHandler,
-	deleteBusHandler,
 } from './controllers.js';
 import updateValidation from './updateValidation.js';
+import busValidation from './validations.js';
 
 const resource = 'buses';
 

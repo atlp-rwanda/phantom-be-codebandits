@@ -97,6 +97,13 @@ describe('Route router tests', async () => {
 			.set('Authorization', `Bearer ${token}`);
 		expect(response).to.have.status(200);
 	});
+	it('should not get single Route with Id', async () => {
+		const response = await chai
+			.request(app)
+			.get(`/api/v1/routes/1000`)
+			.set('Authorization', `Bearer ${token}`);
+		expect(response).to.have.status(404);
+	});
 	it('should Edit Route', async () => {
 		const editRoute = data.routes.edit;
 		const response = await chai

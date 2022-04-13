@@ -1,13 +1,13 @@
 /* eslint-disable */
 import 'reflect-metadata';
 import { DataSource } from 'typeorm';
-import { DriverSchema } from './driverApp/models.js';
-import { UserSchema } from './models/user.js';
-import { RefreshTokenSchema } from './models/refreshToken.js';
-import { OperatorSchema } from './operatorApp/models.js';
-import { ResetTokenSchema } from './userApp/models.js';
 import { BusSchema } from './busesApp/models.js';
 import { RouteSchema } from './routeApp/models.js';
+import { DriverSchema } from './driverApp/models.js';
+import { RefreshTokenSchema } from './models/refreshToken.js';
+import { UserSchema } from './models/user.js';
+import { OperatorSchema } from './operatorApp/models.js';
+import { ResetTokenSchema } from './userApp/models.js';
 
 let options = {
 	type: 'postgres',

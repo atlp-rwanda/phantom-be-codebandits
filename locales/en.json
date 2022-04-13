@@ -73,5 +73,7 @@
 	"min_max": "Coordinates must lie between 10 and 50",
 	"greater_5": "Distance must be at most 5 digits",
 	"number": "Distance must be a number",
-	"coor_invalid": "Invalid coordinates"
+	"coor_invalid": "Invalid coordinates",
+	"Invalid plate number": "Invalid plate number",
+	"This is required": "This is required"
 }

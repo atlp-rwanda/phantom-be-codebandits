@@ -2,7 +2,10 @@ import ac from '../configs/ac.js';
 import handleResponse from '../controllers/handleResponse.js';
 
 const CheckPermissionAny = (resource) => async (req, res, next) => {
-	if (req.user.role === 'admin') return next();
+	if (req.user.role === 'admin') {
+		req.attributes = ['*', '!user.password', '!password'];
+		return next();
+	}
 	let permission;
 	switch (req.method) {
 		case 'GET':
@@ -42,7 +45,10 @@ const CheckPermissionAny = (resource) => async (req, res, next) => {
 export default CheckPermissionAny;
 
 export const CheckPermissionOwn = (resource) => async (req, res, next) => {
-	if (req.user.role === 'admin') return next();
+	if (req.user.role === 'admin') {
+		req.attributes = ['*', '!user.password', '!password'];
+		return next();
+	}
 	let permission;
 	switch (req.method) {
 		case 'GET':

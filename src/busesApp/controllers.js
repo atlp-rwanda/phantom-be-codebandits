@@ -21,7 +21,12 @@ export const postBusHandler = async (req, res) => {
 };
 
 export const getBusHandler = async (req, res) => {
-	const buses = await findBuses();
+	let options;
+	// eslint-disable-next-line no-unused-expressions
+	req.query?.relation === 'true'
+		? (options = { relations: ['route'] })
+		: (options = {});
+	const buses = await findBuses(options);
 	return handleResponse(res, 200, buses);
 };
 

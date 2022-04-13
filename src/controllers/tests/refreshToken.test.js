@@ -79,7 +79,7 @@ describe('REFRESH', () => {
 				.get('/api/v1/accounts/refresh')
 				.set('Cookie', 'jwt=bkjfsdkjdfdlsbdshlhjdlhd')
 				.end((err, res) => {
-					res.should.have.status(403);
+					res.should.have.status(401);
 					res.body.should.be.a('object');
 					res.body.should.have.property('data');
 					res.body.data.should.have.property('message');

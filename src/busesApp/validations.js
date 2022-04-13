@@ -16,13 +16,11 @@ const busValidation = () => [
 		.isLength({ min: 3 })
 		.withMessage('min_3_char'),
 	body('seats', 'seats_required')
-		.toInt()
-		.notEmpty()
-		.bail()
 		.isNumeric()
 		.withMessage('enter_a_number')
 		.isLength({ min: 2 })
-		.withMessage('min_2_char'),
+		.withMessage('min_2_char')
+		.toInt(),
 ];
 
 export default busValidation;

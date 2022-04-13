@@ -1,8 +1,7 @@
-import { BaseEntity, EntitySchema } from 'typeorm';
+import { EntitySchema } from 'typeorm';
+import CustomBaseEntity from '../models/base.js';
 
-export class Bus extends BaseEntity {
-	id;
-
+export class Bus extends CustomBaseEntity {
 	plateNumber;
 
 	company;
@@ -10,6 +9,18 @@ export class Bus extends BaseEntity {
 	busType;
 
 	seats;
+
+	routeId;
+
+	static async findByPlate(plate) {
+		const bus = await this.createQueryBuilder('bus')
+			.where('bus.plateNumber = :plateNumber', {
+				plateNumber: plate,
+				relations: ['route'],
+			})
+			.getOne();
+		return bus;
+	}
 }
 
 export const BusSchema = new EntitySchema({
@@ -25,6 +36,7 @@ export const BusSchema = new EntitySchema({
 		plateNumber: {
 			type: 'varchar',
 			unique: true,
+			required: true,
 		},
 		company: {
 			type: 'varchar',
@@ -35,6 +47,32 @@ export const BusSchema = new EntitySchema({
 		},
 		seats: {
 			type: 'int',
+		},
+
+		createdAt: {
+			name: 'created_at',
+			type: 'timestamp with time zone',
+			createDate: true,
+		},
+		updatedAt: {
+			name: 'updated_at',
+			type: 'timestamp with time zone',
+			updateDate: true,
+		},
+		routeId: {
+			type: 'int',
+			nullable: true,
+		},
+	},
+	relations: {
+		route: {
+			target: 'Route',
+			type: 'many-to-one',
+			onDelete: 'SET NULL',
+			onUpdate: 'SET NULL',
+			nullable: true,
+			joinColumn: true,
+			cascade: true,
 		},
 	},
 });

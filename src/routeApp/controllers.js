@@ -1,5 +1,4 @@
 import { matchedData } from 'express-validator';
-import { handleGetSingle } from '../controllers/baseControllers.js';
 import handleResponse from '../controllers/handleResponse.js';
 import { findAllUsers as findAllRoutes } from '../services/baseServices.js';
 import Route from './models.js';
@@ -12,7 +11,9 @@ export const getRoutes = async (req, res) => {
 };
 
 export const getSingleRoute = async (req, res) => {
-	const oneRoute = await handleGetSingle(Route, req, res);
+	const { id } = req.params;
+	const oneRoute = await Route.findOne({ where: { id }, relations: ['buses'] });
+	if (!oneRoute) return handleResponse(res, 404, 'Resource not found');
 	return handleResponse(res, 200, oneRoute);
 };
 
