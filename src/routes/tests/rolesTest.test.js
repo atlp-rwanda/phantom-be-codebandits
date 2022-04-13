@@ -50,7 +50,7 @@ describe('ROLES AND PERMISSIONS', async () => {
 				.request(app)
 				.put('/api/v1/drivers/123')
 				.set('Authorization', `Bearer ${token}`);
-			expect(res).to.have.status(200);
+			expect(res).to.have.status(404);
 		});
 		it('Return unauthorized for creating driver', async () => {
 			const res = await chai
@@ -105,7 +105,7 @@ describe('ROLES AND PERMISSIONS', async () => {
 				.request(app)
 				.put('/api/v1/drivers/123')
 				.set('Authorization', `Bearer ${token}`);
-			expect(res).to.have.status(200);
+			expect(res).to.have.status(404);
 		});
 		it('Return unauthorized for getting operators', async () => {
 			const res = await chai

@@ -1,10 +1,10 @@
 import handleResponse from '../controllers/handleResponse.js';
 import {
-	createUser,
-	deleteUser,
-	findAllUsers,
-	findSingleUser,
-} from '../services/baseServices.js';
+	handleDelete,
+	handleEdit,
+	handleGetSingle,
+} from '../controllers/baseControllers.js';
+import { createUser, findAllUsers } from '../services/baseServices.js';
 import { Operator } from './models.js';
 
 export const getOperators = async (req, res) => {
@@ -13,9 +13,7 @@ export const getOperators = async (req, res) => {
 };
 
 export const getSingleOperator = async (req, res) => {
-	const { id } = req.params;
-	const operatorExist = await findSingleUser(Operator, id, res);
-	return handleResponse(res, 200, operatorExist);
+	await handleGetSingle(Operator, req, res);
 };
 
 export const createOperator = async (req, res) => {
@@ -24,7 +22,9 @@ export const createOperator = async (req, res) => {
 };
 
 export const deleteOperator = async (req, res) => {
-	const { id } = req.params;
-	await deleteUser(Operator, id, res);
-	return handleResponse(res, 200, res.__('operator_deleted'));
+	await handleDelete(Operator, 'operator_deleted', req, res);
+};
+
+export const editOperator = async (req, res) => {
+	await handleEdit(Operator, 'operator_updated', req, res);
 };

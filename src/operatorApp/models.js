@@ -3,8 +3,6 @@ import { BaseEntity, EntitySchema } from 'typeorm';
 export class Operator extends BaseEntity {
 	id;
 
-	email;
-
 	mobileNumber;
 
 	company;
@@ -33,6 +31,9 @@ export const OperatorSchema = new EntitySchema({
 		nationalID: {
 			type: 'varchar',
 			unique: true,
+		},
+		company: {
+			type: 'varchar',
 		},
 	},
 	relations: {
