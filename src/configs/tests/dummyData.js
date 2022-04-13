@@ -95,6 +95,19 @@ const dataFn = async () => {
 				mobileNumber: '0788231378',
 			},
 		},
+		buses: {
+			valid: {
+				plateNumber: 'RAD555E',
+				company: 'Kigali Bus Services',
+				busType: 'Coaster',
+				seats: '27',
+			},
+			edit: {
+				plateNumber: 'RAD558E',
+				busType: 'Coaster',
+				seats: '27',
+			},
+		},
 	};
 
 	return data;

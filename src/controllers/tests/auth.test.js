@@ -9,16 +9,12 @@ chai.use(chaiHttp);
 chai.should();
 
 describe('LOGIN', () => {
-	before((done) => {
-		server.on('started', async () => {
-			try {
-				await DataSource.query('TRUNCATE "User" CASCADE');
-			} catch (error) {
-				logger.error(error.message);
-			} finally {
-				done();
-			}
-		});
+	before(async () => {
+		try {
+			await DataSource.query('TRUNCATE "User" CASCADE');
+		} catch (error) {
+			logger.error(error.message);
+		}
 	});
 
 	describe('LOGIN a user', () => {
