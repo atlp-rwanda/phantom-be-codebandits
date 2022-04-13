@@ -38,15 +38,14 @@
 	"firstName_required": "firstName_required",
 	"national_ID_invalid": "national_ID_invalid",
 	"license_invalid": "license_invalid",
-	"not_found": "not_found",
 	"driver_deleted": "driver deleted successfully",
 	"zero_users": "No users in the database",
 	"address_required": "Adrress is required",
-	"operator_deleted": "operator_deleted",
+	"operator_deleted": "Operator deleted successfully",
 	"driver_updated": "Driver updated successfully",
 	"national_ID_exist": "User with provided national ID exists",
 	"license_ID_exist": "User with provided license exists",
-	"not_Found": "not_Found",
 	"A strong password required": "A strong password required",
-	"This too is required": "This too is required"
+	"This too is required": "This too is required",
+	"operator_updated": "Operator updated successfully"
 }
