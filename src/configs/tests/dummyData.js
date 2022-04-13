@@ -108,6 +108,23 @@ const dataFn = async () => {
 				seats: '27',
 			},
 		},
+		routes: {
+			valid: {
+				origin: 'Nyanza',
+				destination: 'Nyabugogo',
+				distance: 146,
+			},
+			invalid: {
+				origin: 'Nyanza',
+				destination: '',
+				distance: 146999999999999,
+			},
+			edit: {
+				origin: 'Nyanza',
+				destination: 'Remera',
+				distance: 146,
+			},
+		},
 	};
 
 	return data;

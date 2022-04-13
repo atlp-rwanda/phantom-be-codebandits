@@ -53,5 +53,15 @@
 	"busType_required": "Le type de bus est requis",
 	"seats_required": "Le nombre de sièges est requis",
 	"driver_required": "Le pilote est requis",
-	"route_required": "L'itinéraire est requis"
+	"route_required": "L'itinéraire est requis",
+	"firstDestination_required": "La première destination est requise",
+	"secondDestination_required": "Une deuxième destination est requise",
+	"distance_required": "La distance est requise",
+	"route_deleted": "Itinéraire supprimé avec succès",
+	"origin_required": "L'origine est requise",
+	"destination_required": "La destination est obligatoire",
+	"geographical_coordinates": "Cela devrait être des coordonnées géographiques",
+	"min_max": "Les coordonnées doivent être comprises entre 10 et 50",
+	"greater_5": "Distance must be at most 5 digits",
+	"coor_invalid": "Coordonnées invalides"
 }

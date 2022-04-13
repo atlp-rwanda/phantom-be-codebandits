@@ -7,6 +7,7 @@ import { RefreshTokenSchema } from './models/refreshToken.js';
 import { OperatorSchema } from './operatorApp/models.js';
 import { ResetTokenSchema } from './userApp/models.js';
 import { BusSchema } from './busesApp/models.js';
+import { RouteSchema } from './routeApp/models.js';
 
 let options = {
 	type: 'postgres',
@@ -24,6 +25,7 @@ let options = {
 		RefreshTokenSchema,
 		ResetTokenSchema,
 		BusSchema,
+		RouteSchema,
 	],
 	migrations: ['./migration/*.js'],
 	subscribers: [],
