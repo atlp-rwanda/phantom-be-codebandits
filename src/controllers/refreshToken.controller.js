@@ -29,9 +29,9 @@ const refresh = async (req, res) => {
 		const accessToken = jwt.sign(
 			{ id: userToken.user.id, role: userToken.user.role },
 			process.env.ACCESS_TOKEN_SECRET,
-			{ expiresIn: '600s' }
+			{ expiresIn: '120s' }
 		);
-		return handleResponse(res, 200, { token: accessToken });
+		return handleResponse(res, 200, { access_token: accessToken });
 		/* c8 ignore next 3 */
 	} catch (err) {
 		handleResponse(res, 500, { message: res.__('serverError') });

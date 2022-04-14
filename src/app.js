@@ -5,6 +5,7 @@ import express from 'express';
 import path from 'path';
 import swaggerJSDoc from 'swagger-jsdoc';
 import swaggerUi from 'swagger-ui-express';
+import corsOptions from './configs/cors.js';
 import i18n from './configs/i18n.js';
 import reqLogger from './configs/reqLogger.js';
 import options, { customizationOptions } from './configs/swagger.js';
@@ -21,7 +22,7 @@ const __dirname = path.resolve();
 const PORT = process.env.PORT || 5000;
 /* c8 ignore next stop */
 const app = express();
-app.use(cors());
+app.use(cors(corsOptions));
 app.use(reqLogger);
 app.use(express.json());
 app.use(cookieParser());

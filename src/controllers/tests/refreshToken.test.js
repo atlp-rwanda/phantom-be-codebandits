@@ -1,9 +1,9 @@
-import dotenv from 'dotenv';
 import chai from 'chai';
 import chaiHttp from 'chai-http';
-import DataSource from '../../data-source.js';
-import logger from '../../configs/winston.js';
+import dotenv from 'dotenv';
 import server from '../../app.js';
+import logger from '../../configs/winston.js';
+import DataSource from '../../data-source.js';
 
 dotenv.config();
 
@@ -51,7 +51,7 @@ describe('REFRESH', () => {
 									res.should.have.status(200);
 									res.body.should.be.a('object');
 									res.body.should.have.property('data');
-									res.body.data.should.have.property('token');
+									res.body.data.should.have.property('access_token');
 									done();
 								});
 						});

@@ -17,7 +17,7 @@ const AuthHandler = async (req, res) => {
 			const accessToken = jwt.sign(
 				{ id: user.id, role: user.role },
 				process.env.ACCESS_TOKEN_SECRET,
-				{ expiresIn: '600s' }
+				{ expiresIn: '120s' }
 			);
 			const oldToken = await RefreshToken.findOneBy({ user });
 			if (oldToken) await oldToken.remove();
@@ -25,6 +25,8 @@ const AuthHandler = async (req, res) => {
 			res.cookie('jwt', refreshToken, {
 				httpOnly: true,
 				maxAge: 60 * 60 * 60 * 24 * 7,
+				sameSite: 'none',
+				secure: process.env.NODE_ENV === 'production',
 			});
 			return handleResponse(res, 200, {
 				first_name: user.firstName,
