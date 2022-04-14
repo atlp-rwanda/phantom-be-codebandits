@@ -6,8 +6,8 @@
 
 This is a the backend repository for Phantom project which is an application that aims at addressing a problem of commuters in Kigali who spend a long time at the bus stations or in queues waiting for buses to come. it will allow simulating bus movements and enabling passengers to track their locations & movements.
 
-- [] Check out Phantom frontend repository [linked here](https://github.com/atlp-rwanda/phantom-fe-codebandits)
-- [] Check the hosted Frontend application [linked here](https://phantom-codebantis.herokuapp.com)
+- [ ] Check out Phantom frontend repository [linked here](https://github.com/atlp-rwanda/phantom-fe-codebandits)
+- [ ] Check the hosted Frontend application [linked here](https://phantom-codebantis.herokuapp.com)
 
 ## Getting Started
 
@@ -51,7 +51,7 @@ npm run start // to start in watch mode use <npm run dev>
 
 You can configure the application with the following [environment variables]:
 
-> Refer to the `.env.sample.md` file for the configuration required
+> Refer to the `.env.sample` file for the configuration required
 
 #### Docker container for testing
 

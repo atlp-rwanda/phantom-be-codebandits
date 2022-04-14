@@ -47,5 +47,6 @@
 	"license_ID_exist": "User with provided license exists",
 	"A strong password required": "A strong password required",
 	"This too is required": "This too is required",
-	"operator_updated": "Operator updated successfully"
+	"operator_updated": "Operator updated successfully",
+	"Permission denied": "Permission denied"
 }

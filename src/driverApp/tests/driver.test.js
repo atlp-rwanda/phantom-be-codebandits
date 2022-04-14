@@ -1,7 +1,7 @@
-import bcrypt from 'bcrypt';
 import chai, { expect } from 'chai';
 import chaiHttp from 'chai-http';
 import app from '../../app.js';
+import dataFn from '../../configs/tests/dummyData.js';
 import logger from '../../configs/winston.js';
 import DataSource from '../../data-source.js';
 import User from '../../models/user.js';
@@ -21,16 +21,11 @@ describe('driver router tests', () => {
 	let token;
 	let createdDriverId;
 	let driverInfo;
-	it('should login an admin user', async () => {
-		const password = await bcrypt.hash('Andela@1234', 5);
-		const newUser = User.create({
-			email: 'test123@gmail.com',
-			password,
-			firstName: 'test',
-			lastName: 'Andela',
-			role: 'admin',
-		});
-		const user = await newUser.save();
+	let data;
+	it('should login an operator user', async () => {
+		data = await dataFn();
+		driverInfo = data.drivers.valid;
+		const user = await User.createAndSave(data.users.operator);
 		const info = { email: user.email, password: 'Andela@1234' };
 		const response = await chai
 			.request(app)
@@ -48,16 +43,6 @@ describe('driver router tests', () => {
 		expect(response.body.data).to.have.length(0);
 	});
 	it('should create a new driver', async () => {
-		driverInfo = {
-			firstName: 'testName',
-			lastName: 'testname2',
-			email: 'tiktok@me.com',
-			mobileNumber: '0788352746',
-			company: 'Kigali Bus Services',
-			address: 'Kabuga, Kigali',
-			nationalID: '1200080081691164',
-			license: '1200080081691164',
-		};
 		const response = await chai
 			.request(app)
 			.post('/api/v1/drivers')
@@ -82,18 +67,10 @@ describe('driver router tests', () => {
 		expect(response).to.have.status(200);
 	});
 	it('should edit a driver', async () => {
-		const editInfo = {
-			lastName: 'Samuel',
-			firstName: 'Shyaka',
-			wrongKey: 'nananana',
-			email: 'yvesivad@gmail.com',
-			role: 'admin',
-			mobileNumber: '0788231378',
-		};
 		const response = await chai
 			.request(app)
 			.put(`/api/v1/drivers/${createdDriverId}`)
-			.send(editInfo)
+			.send(data.drivers.edit)
 			.set('Authorization', `Bearer ${token}`);
 		expect(response).to.have.status(200);
 		expect(response.body.data).to.contain('Driver updated successfully');

@@ -12,6 +12,12 @@ export class User extends BaseEntity {
 	lastName;
 
 	role;
+
+	static async createAndSave(data) {
+		const user = this.create(data);
+		const saveUser = await user.save();
+		return saveUser;
+	}
 }
 
 export const UserSchema = new EntitySchema({
