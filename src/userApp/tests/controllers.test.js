@@ -2,6 +2,7 @@ import chai, { expect } from 'chai';
 import chaiHttp from 'chai-http';
 import { v4 as uuid } from 'uuid';
 import app from '../../app.js';
+import dataFn from '../../configs/tests/dummyData.js';
 import logger from '../../configs/winston.js';
 import AppDataSource from '../../data-source.js';
 import User from '../../models/user.js';
@@ -11,6 +12,7 @@ chai.use(chaiHttp);
 chai.should();
 
 describe('Reset password controllers tests', () => {
+	let data;
 	before(async () => {
 		try {
 			await AppDataSource.query('TRUNCATE "RefreshToken" CASCADE');
@@ -21,14 +23,12 @@ describe('Reset password controllers tests', () => {
 	});
 	let token;
 
-	it('Create a user', async () => {
-		const res = await chai.request(app).post('/api/v1/users').send({
-			firstName: 'Patrick',
-			lastName: 'Shema',
-			email: 'user@gmail.com',
-			password: 'PasswordToForget@123',
-			role: 'admin',
-		});
+	it('Setup tests and create users', async () => {
+		data = await dataFn();
+		const res = await chai
+			.request(app)
+			.post('/api/v1/users')
+			.send(data.users.admin);
 		expect(res).to.have.status(201);
 	});
 
@@ -43,7 +43,7 @@ describe('Reset password controllers tests', () => {
 		const response = await chai
 			.request(app)
 			.post(`/api/v1/accounts/forgot-password/`)
-			.send({ email: 'user@gmail.com' });
+			.send({ email: data.users.admin.email });
 		expect(response).to.have.status(200);
 	});
 	it('should return a user not found error', async () => {
@@ -55,14 +55,7 @@ describe('Reset password controllers tests', () => {
 	});
 
 	it('should return a valid token response', async () => {
-		const newUser = User.create({
-			email: 'test123@gmail.com',
-			password: 'Andela@123',
-			firstName: 'test',
-			lastName: 'Andela',
-			role: 'admin',
-		});
-		const user = await User.save(newUser);
+		const user = await User.createAndSave(data.users.driver);
 		const time = new Date();
 		const resetToken = ResetToken.create({
 			token: uuid(),
@@ -74,7 +67,7 @@ describe('Reset password controllers tests', () => {
 		const response = await chai
 			.request(app)
 			.get(`/api/v1/accounts/reset-password/${resetToken.token}`)
-			.send({ email: 'user@gmail.com' });
+			.send({ email: data.users.driver.email });
 		expect(response).to.have.status(200);
 		expect(response.body.data).to.have.property('token');
 	});
@@ -88,14 +81,7 @@ describe('Reset password controllers tests', () => {
 	});
 
 	it('should return a valid token response', async () => {
-		const newUser = User.create({
-			email: 'test12345@gmail.com',
-			password: 'Andela@123',
-			firstName: 'test',
-			lastName: 'Andela',
-			role: 'admin',
-		});
-		const user = await User.save(newUser);
+		const user = await User.createAndSave(data.users.user);
 		const time = new Date();
 		const resetToken = ResetToken.create({
 			token: uuid(),
@@ -107,20 +93,13 @@ describe('Reset password controllers tests', () => {
 		const response = await chai
 			.request(app)
 			.get(`/api/v1/accounts/reset-password/${resetToken.token}`)
-			.send({ email: 'user@gmail.com' });
+			.send({ email: data.users.user.email });
 		expect(response).to.have.status(401);
 		expect(response.body.data).to.not.have.property('token');
 	});
 
-	it('should return a valid token response', async () => {
-		const newUser = User.create({
-			email: 'test123999@gmail.com',
-			password: 'Andela@123',
-			firstName: 'test',
-			lastName: 'Andela',
-			role: 'admin',
-		});
-		const user = await User.save(newUser);
+	it('should reset a password for the user', async () => {
+		const user = await User.createAndSave(data.users.resetToken);
 		const time = new Date();
 		const resetToken = ResetToken.create({
 			token: uuid(),
@@ -136,15 +115,8 @@ describe('Reset password controllers tests', () => {
 		expect(response).to.have.status(400);
 		expect(response.body.data).to.not.have.property('token');
 	});
-	it('should return a valid token response', async () => {
-		const newUser = User.create({
-			email: 'test123990@gmail.com',
-			password: 'Andela@123',
-			firstName: 'test',
-			lastName: 'Andela',
-			role: 'admin',
-		});
-		const user = await User.save(newUser);
+	it('should delete an existing token before creating a new one', async () => {
+		const user = await User.createAndSave(data.users.reset);
 		const time = new Date();
 		const resetToken = ResetToken.create({
 			token: uuid(),
@@ -156,7 +128,7 @@ describe('Reset password controllers tests', () => {
 		const response = await chai
 			.request(app)
 			.post(`/api/v1/accounts/forgot-password`)
-			.send({ email: 'test123990@gmail.com' });
+			.send({ email: data.users.reset.email });
 		expect(response).to.have.status(200);
 		expect(response.body.data).to.not.have.property('token');
 	});
