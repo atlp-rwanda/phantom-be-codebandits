@@ -1,0 +1,43 @@
+# Start writting at line 16
+# ----------------------------------------------------------
+# Header - type(scope): Brief description (try to keep under 50 characters)
+# ----------------------------------------------------------
+#    * feat             A new feature - PATCH
+#    * fix              A bug fix - MINOR
+#    * docs             Change to documentation only
+#    * style            Change to style (whitespace, etc.)
+#    * refactor         Change not related to a bug or feat
+#    * perf             Change that affects performance
+#    * test             Change that adds/modifies tests
+#    * build            Change to build system
+#    * ci               Change to CI pipeline/workflow
+#    * chore            General tooling/config/min refactor
+# ----------------------------------------------------------
+# feat(auth): create sign up page
+
+# ----------------------------------------------------------
+# Body - More description, if necessary
+# ----------------------------------------------------------
+#    * Motivation behind changes, more detail into how
+#      *functionality might be affected, etc.
+#   - create the ui for the feature
+#   - modify some components
+# ----------------------------------------------------------
+
+
+# ----------------------------------------------------------
+# Footer - Associated issues, PRs, Trello card .
+# ----------------------------------------------------------
+#    * Ex: Finishes [#CP-45]
+# ----------------------------------------------------------
+
+
+# ----------------------------------------------------------
+# Co-authors - Give credit, where credit is due. 
+# Use the format and ensure to use private email
+# ----------------------------------------------------------
+#    * Ex: Co-authored-by: name <28519395+feyton@users.noreply.github.com>
+# ----------------------------------------------------------
+
+
+# Start below this line for co-authors

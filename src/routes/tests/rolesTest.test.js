@@ -57,14 +57,14 @@ describe('ROLES AND PERMISSIONS', async () => {
 				.request(app)
 				.post('/api/v1/drivers')
 				.set('Authorization', `Bearer ${token}`);
-			expect(res).to.have.status(401);
+			expect(res).to.have.status(403);
 		});
 		it('Return unauthorized for getting operators', async () => {
 			const res = await chai
 				.request(app)
 				.post('/api/v1/operators')
 				.set('Authorization', `Bearer ${token}`);
-			expect(res).to.have.status(401);
+			expect(res).to.have.status(403);
 		});
 		it('Return unauthorized for invalid token', async () => {
 			const res = await chai
@@ -112,7 +112,7 @@ describe('ROLES AND PERMISSIONS', async () => {
 				.request(app)
 				.post('/api/v1/operators')
 				.set('Authorization', `Bearer ${token}`);
-			expect(res).to.have.status(401);
+			expect(res).to.have.status(403);
 		});
 		it('Return a raised an error', async () => {
 			const res = await chai
