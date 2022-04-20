@@ -75,5 +75,9 @@
 	"number": "Distance must be a number",
 	"coor_invalid": "Invalid coordinates",
 	"Invalid plate number": "Invalid plate number",
-	"This is required": "This is required"
+	"This is required": "This is required",
+	"driver_not_found": "Driver not found",
+	"driver_assigned": "Driver assigned bus successfully",
+	"bus_has_driver": "Bus is assigned to a driver",
+	"bus_no_driver": "Bus has no driver assigned"
 }

@@ -146,10 +146,6 @@
  *         name: id
  *         required: true
  *         description: A valid route id.
- *       - in: headers
- *         name: Accept-Language
- *         required: false
- *         description: Choose a language
  *      responses:
  *          201:
  *              description: Return a success when a route is deleted

@@ -1,3 +1,4 @@
+import { AccessControl } from 'accesscontrol';
 import { matchedData } from 'express-validator';
 import handleResponse from '../controllers/handleResponse.js';
 import { Bus } from './models.js';
@@ -33,6 +34,7 @@ export const getBusHandler = async (req, res) => {
 export const getSingleBusHandler = async (req, res) => {
 	const { id } = req.params;
 	const bus = await findBusById(id);
+
 	if (!bus) {
 		return handleResponse(res, 404, { message: res.__('Bus not found') });
 	}
@@ -60,4 +62,18 @@ export const deleteBusHandler = async (req, res) => {
 	}
 	await deleteBus(bus);
 	return handleResponse(res, 200, { message: res.__('Bus deleted') });
+};
+
+export const checkDriverStatus = async (req, res) => {
+	const { plate } = req.params;
+	const busExist = await Bus.findByPlate(plate);
+	if (!busExist)
+		return handleResponse(res, 404, { message: res.__('Bus not found') });
+	if (!busExist.driverId)
+		return handleResponse(res, 200, { message: res.__('bus_no_driver') });
+	return handleResponse(
+		res,
+		200,
+		AccessControl.filter(busExist.driver, ['*', '!user'])
+	);
 };

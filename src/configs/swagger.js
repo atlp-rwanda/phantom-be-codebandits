@@ -25,7 +25,7 @@ const options = {
 		},
 		servers: [
 			{
-				/* c-8 ignore next 1 */
+				/* c8 ignore next 1 */
 				url: serverURL || 'http://localhost:5000/',
 				description: 'Phantom Server',
 			},

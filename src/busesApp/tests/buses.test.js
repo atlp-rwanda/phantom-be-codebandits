@@ -15,6 +15,7 @@ describe('buses router tests', () => {
 			try {
 				await DataSource.query('TRUNCATE "User" CASCADE');
 				await DataSource.query('TRUNCATE "Bus" CASCADE');
+				await DataSource.query('TRUNCATE "Driver" CASCADE');
 			} catch (error) {
 				logger.error(error.message);
 			} finally {
@@ -25,6 +26,7 @@ describe('buses router tests', () => {
 	let token;
 	let createdBusId;
 	let busInfo;
+	let createdDriverId;
 	let data;
 	it('should login an operator user', async () => {
 		data = await dataFn();
@@ -41,6 +43,15 @@ describe('buses router tests', () => {
 		expect(response.body).to.have.property('code');
 		expect(response.body).to.have.property('data');
 		token = response.body.data.access_token;
+	});
+	it('should create a driver to assign to a bus', async () => {
+		const response = await chai
+			.request(app)
+			.post('/api/v1/drivers')
+			.send(data.drivers.valid)
+			.set('Authorization', `Bearer ${token}`);
+		expect(response).to.have.status(201);
+		createdDriverId = response.body.data.id;
 	});
 	it('should return empty when no buses ', async () => {
 		const response = await chai
@@ -82,13 +93,60 @@ describe('buses router tests', () => {
 	it('should get a single bus', async () => {
 		const response = await chai
 			.request(app)
-			.get(`/api/v1/buses/${createdBusId}`)
+			.get(`/api/v1/buses/${createdBusId}?relation=true`)
 			.set('Authorization', `Bearer ${token}`);
 		expect(response).to.have.status(200);
 		expect(response.body).to.be.an('object');
 		expect(response.body).to.have.property('status');
 		expect(response.body).to.have.property('code');
 		expect(response.body).to.have.property('data');
+	});
+	it('should check that a bus has no driver assigned', async () => {
+		const response = await chai
+			.request(app)
+			.get(`/api/v1/buses/${busInfo.plateNumber}/driver`)
+			.set('Authorization', `Bearer ${token}`);
+		expect(response).to.have.status(200);
+		expect(response.body.data.message).to.contain('Bus has no driver assigned');
+	});
+	it('Should assign driver to a bus', async () => {
+		const response = await chai
+			.request(app)
+			.post(`/api/v1/drivers/${createdDriverId}/bus/${busInfo.plateNumber}`)
+			.set('Authorization', `Bearer ${token}`);
+		expect(response).to.have.status(200);
+	});
+	it('should find that a bus has driver assigned', async () => {
+		const response = await chai
+			.request(app)
+			.get(`/api/v1/buses/${busInfo.plateNumber}/driver`)
+			.set('Authorization', `Bearer ${token}`);
+		expect(response).to.have.status(200);
+		expect(response.body.data.id).to.equal(createdDriverId);
+	});
+	it('Should not assign unregistered driver to a bus', async () => {
+		const response = await chai
+			.request(app)
+			.post(`/api/v1/drivers/10000000/bus/${busInfo.plateNumber}`)
+			.set('Authorization', `Bearer ${token}`);
+		expect(response).to.have.status(404);
+		expect(response.body.data).to.contain('Driver not found');
+	});
+	it('Should not assign driver to an unregistered bus', async () => {
+		const response = await chai
+			.request(app)
+			.post(`/api/v1/drivers/${createdDriverId}/bus/R3ABAS1`)
+			.set('Authorization', `Bearer ${token}`);
+		expect(response).to.have.status(404);
+		expect(response.body.data).to.contain('Bus not found');
+	});
+	it('should not find the bus driver when that bus is not registered', async () => {
+		const response = await chai
+			.request(app)
+			.get(`/api/v1/buses/R3ABAS1/driver`)
+			.set('Authorization', `Bearer ${token}`);
+		expect(response).to.have.status(404);
+		expect(response.body.data.message).to.contain('Bus not found');
 	});
 	it('should update the bus', async () => {
 		const response = await chai

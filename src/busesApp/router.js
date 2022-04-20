@@ -4,6 +4,7 @@ import CheckPermissionAny from '../middlewares/CheckPermission.js';
 import asyncHandler from '../utils/asyncHandler.js';
 import validate from '../utils/validateMiddleware.js';
 import {
+	checkDriverStatus,
 	deleteBusHandler,
 	getBusHandler,
 	getSingleBusHandler,
@@ -50,6 +51,13 @@ busesRouter.delete(
 	verifyToken,
 	CheckPermissionAny(resource),
 	asyncHandler(deleteBusHandler)
+);
+
+busesRouter.get(
+	'/:plate/driver',
+	verifyToken,
+	CheckPermissionAny(resource),
+	asyncHandler(checkDriverStatus)
 );
 
 export default busesRouter;

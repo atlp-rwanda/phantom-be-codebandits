@@ -65,5 +65,8 @@
 	"min_max": "Imiterere ya geografiya igomba kuba hagati ya 10 na 50",
 	"greater_5": "Intera igomba kuba byibuze imibare 5",
 	"number": "Intera igomba kuba ari umubare",
-	"coor_invalid": "Nti zemewe"
+	"coor_invalid": "Nti zemewe",
+	"driver_assigned": "Umushoferi yahawe bisi neza",
+	"bus_has_driver": "Bisi yahawe umushoferi",
+	"bus_no_driver": "Bisi nta mushoferi yahawe"
 }
