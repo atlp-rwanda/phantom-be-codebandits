@@ -83,7 +83,8 @@
  *          404:
  *              description: Driver was not found in the database
  *          500:
- *              description: Something went wrong on the server
+ *              description: Return all users from the database
+ */
 
 /**
  * @swagger
@@ -147,62 +148,6 @@
  *          500:
  *              description: Something went wrong on the server
  *
- */
-
-/**
- * @swagger
- * /api/v1/drivers/{id}/bus/{plate}:
- *  put:
- *      security:
- *         - Token: []
- *      summary: Assign driver to a bus
- *      description: get driver with a given Id and assign them to a bus with a given plate number
- *      tags:
- *         - Drivers
- *      parameters:
- *       - in: path
- *         name: id
- *         required: true
- *         description: A valid driver id.
- *       - in: path
- *         name: plate
- *         required: true
- *         description: A valid bus plate number
- *      responses:
- *          200:
- *              description: driver assignment to bus successfully
- *          401:
- *              description: Missing or invalid access token
- *          404:
- *              description: Driver was not found in the database or bus not found in database
- *          500:
- *              description: Something went wrong on the server
- */
-
-/**
- * @swagger
- * /api/v1/drivers/{id}/bus:
- *  get:
- *      security:
- *         - Token: []
- *      summary: check driver bus assignment status
- *      description: get driver with a given Id check if they are assigned to a bus
- *      tags:
- *         - Drivers
- *      parameters:
- *       - in: path
- *         name: id
- *         required: true
- *         description: A valid driver id.
- *      responses:
- *          200:
- *              description: return a assignment status message
- *          401:
- *              description: Missing or invalid access token
- *          404:
- *              description: Driver was not found in the database
- *          500:
- *              description: Something went wrong on the server
  */
 
 /**
