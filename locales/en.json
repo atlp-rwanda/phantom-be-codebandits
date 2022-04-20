@@ -29,6 +29,7 @@
 	"first_name_required": "First name is required",
 	"last_name_required": "Last name is required",
 	"min_3_char": "Minimum of 3 characters required",
+	"min_2_char": "Minimum of 2 characters required",
 	"password_invalid": "Password must be greater than 8 and contain at least one uppercase letter, one lowercase letter, one number and one symbol",
 	"mobile_number_required": "Mobile number is required",
 	"mobile_number_invalid": "Invalid mobile number ",
@@ -48,5 +49,17 @@
 	"A strong password required": "A strong password required",
 	"This too is required": "This too is required",
 	"operator_updated": "Operator updated successfully",
-	"Permission denied": "Permission denied"
+	"Permission denied": "Permission denied",
+	"Bus already exists": "Bus already exists",
+	"Bus deleted": "Bus deleted",
+	"Bus not found": "Bus not found",
+	"Bus updated": "Bus updated",
+	"plateNumber_required": "Bus plate number is required",
+	"plateNumber_invalid": "Bus plate number is invalid",
+	"enter_a_number": "please enter a number",
+	"bus_conflict": "Bus already exists",
+	"busType_required": "Bus type is required",
+	"seats_required": "Number of seats is required",
+	"driver_required": "Driver is required",
+	"route_required": "Route is required"
 }

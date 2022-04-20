@@ -1,7 +1,7 @@
 import { AccessControl } from 'accesscontrol';
 import { User } from '../models/user.js';
 import handleResponse from './handleResponse.js';
-import saveUser from './services/saveUser.js';
+import { saveInstance } from '../services/saveService.js';
 
 export const GetUsers = async (req, res) => {
 	const users = await User.find();
@@ -9,7 +9,7 @@ export const GetUsers = async (req, res) => {
 };
 
 export const CreateUser = async (req, res) => {
-	const newUser = await saveUser(req.body);
+	const newUser = await saveInstance(User, req.body);
 	const { password, ...data } = newUser;
 	return handleResponse(res, 201, data);
 };
