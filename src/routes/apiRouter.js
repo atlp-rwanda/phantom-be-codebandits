@@ -5,6 +5,7 @@ import busesRouter from '../busesApp/router.js';
 import accountsRouter from './accountsRouter.js';
 import companyRouter from './companiesRouter.js';
 import userRouter from './userRouter.js';
+import routeRouter from '../routeApp/routes.js';
 
 const apiRouter = Router();
 
@@ -15,5 +16,6 @@ apiRouter.use('/operators', operatorRouter);
 apiRouter.use('/companies', companyRouter);
 apiRouter.use('/drivers', driverRouter);
 apiRouter.use('/buses', busesRouter);
+apiRouter.use('/routes', routeRouter);
 
 export default apiRouter;

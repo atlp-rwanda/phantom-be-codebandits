@@ -54,5 +54,16 @@
 	"busType_required": "Ubwoko bwa bisi burakenewe",
 	"seats_required": "Umubare w'intebe urakenewe",
 	"driver_required": "Umushoferi arakenewe",
-	"route_required": "Inzira irakenewe"
+	"route_required": "Inzira irakenewe",
+	"firstDestination_required": "Aho ujya habanza harakenewe",
+	"secondDestination_required": "Aho ujya hakabiri harakenewe",
+	"distance_required": "Intera irakenewe",
+	"route_deleted": "Inzira yasibwe neza",
+	"origin_required": "Garagaza aho uturutse",
+	"destination_required": "Aho ujya harakenewe",
+	"geographical_coordinates": "Ibi bigomba kuba bihuza imiterere ya geografiya",
+	"min_max": "Imiterere ya geografiya igomba kuba hagati ya 10 na 50",
+	"greater_5": "Intera igomba kuba byibuze imibare 5",
+	"number": "Intera igomba kuba ari umubare",
+	"coor_invalid": "Nti zemewe"
 }
