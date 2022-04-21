@@ -134,10 +134,6 @@
  *         name: id
  *         required: true
  *         description: A valid operator id.
- *       - in: headers
- *         name: Accept-Language
- *         required: false
- *         description: Choose a language
  *      responses:
  *          201:
  *              description: Return a success when a operator is deleted

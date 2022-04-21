@@ -3,8 +3,8 @@ import { cleanModel } from '../utils/cleanModel.js';
 import passwordGenerator from '../utils/generatePassword.js';
 import sendRegisterEmail from '../utils/sendRegisterEmail.js';
 
-export const findAllUsers = async (Model) => {
-	const drivers = await Model.find();
+export const findAllUsers = async (Model, options = {}) => {
+	const drivers = await Model.find(options);
 	return drivers;
 };
 
@@ -36,7 +36,7 @@ export const createUser = async (Model, userInfo, userRole) => {
 	newUser.user = newRelatedUser;
 	await newUser.save();
 	await sendRegisterEmail(
-		'https://phantom-codebandits-staging.herokuapp.com/login',
+		process.env.LOGIN_URL,
 		newRelatedUser.lastName,
 		newRelatedUser.email,
 		passwords.plainPassword

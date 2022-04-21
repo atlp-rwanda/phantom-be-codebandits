@@ -6,19 +6,19 @@ export class Bus extends CustomBaseEntity {
 
 	company;
 
+	driverId;
+
 	busType;
 
 	seats;
 
 	routeId;
 
-	static async findByPlate(plate) {
-		const bus = await this.createQueryBuilder('bus')
-			.where('bus.plateNumber = :plateNumber', {
-				plateNumber: plate,
-				relations: ['route'],
-			})
-			.getOne();
+	static async findByPlate(plateNumber) {
+		const bus = await this.findOne({
+			where: { plateNumber },
+			relations: ['driver', 'route'],
+		});
 		return bus;
 	}
 }
@@ -44,6 +44,10 @@ export const BusSchema = new EntitySchema({
 		},
 		busType: {
 			type: 'varchar',
+		},
+		driverId: {
+			type: 'int',
+			nullable: true,
 		},
 		seats: {
 			type: 'int',
@@ -73,6 +77,14 @@ export const BusSchema = new EntitySchema({
 			nullable: true,
 			joinColumn: true,
 			cascade: true,
+		},
+		driver: {
+			target: 'Driver',
+			type: 'one-to-one',
+			onDelete: 'SET NULL',
+			onUpdate: 'SET NULL',
+			nullable: true,
+			joinColumn: true,
 		},
 	},
 });

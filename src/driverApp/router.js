@@ -1,5 +1,12 @@
 import { Router } from 'express';
+import verifyToken from '../middlewares/authJwt.js';
+import CheckPermissionAny, {
+	CheckPermissionOwn,
+} from '../middlewares/CheckPermission.js';
+import asyncHandler from '../utils/asyncHandler.js';
+import validate from '../utils/validateMiddleware.js';
 import {
+	assignBus,
 	createDriver,
 	deleteDriver,
 	editDriver,
@@ -8,12 +15,6 @@ import {
 } from './controllers.js';
 import editValidation from './editValidation.js';
 import driverValidation from './validations.js';
-import verifyToken from '../middlewares/authJwt.js';
-import CheckPermissionAny, {
-	CheckPermissionOwn,
-} from '../middlewares/CheckPermission.js';
-import asyncHandler from '../utils/asyncHandler.js';
-import validate from '../utils/validateMiddleware.js';
 
 const resource = 'drivers';
 const driverRouter = Router();
@@ -52,4 +53,12 @@ driverRouter.delete(
 	CheckPermissionAny(resource),
 	asyncHandler(deleteDriver)
 );
+
+driverRouter.post(
+	'/:id/bus/:plate',
+	verifyToken,
+	CheckPermissionAny(resource),
+	asyncHandler(assignBus)
+);
+
 export default driverRouter;

@@ -23,7 +23,7 @@ export const forgotPassword = async (req, res) => {
 	await resetToken.save();
 	const { token } = resetToken;
 
-	const link = `${process.env.BASE_URL}/api/v1/accounts/reset-password/${token}`;
+	const link = `${process.env.RESET_URL}/${token}`;
 	await sendResetEmail(link, req.body.email, user);
 
 	return handleResponse(res, 200, { message: res.__('link_sent') });

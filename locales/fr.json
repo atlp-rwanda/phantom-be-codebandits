@@ -63,5 +63,8 @@
 	"geographical_coordinates": "Cela devrait être des coordonnées géographiques",
 	"min_max": "Les coordonnées doivent être comprises entre 10 et 50",
 	"greater_5": "Distance must be at most 5 digits",
-	"coor_invalid": "Coordonnées invalides"
+	"coor_invalid": "Coordonnées invalides",
+	"driver_assigned": "Bus attribué au conducteur avec succès",
+	"bus_has_driver": "Le bus est attribué au conducteur",
+	"bus_no_driver": "Le bus n'a pas de chauffeur assigné"
 }

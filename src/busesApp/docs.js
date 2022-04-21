@@ -151,13 +151,40 @@
  *         name: id
  *         required: true
  *         description: A valid bus id.
- *       - in: headers
- *         name: Accept-Language
- *         required: false
- *         description: Choose a language
  *      responses:
  *          201:
  *              description: Bus is successfully deleted
+ *          401:
+ *              description: Unauthorized
+ *          403:
+ *              description: Access denied
+ *          404:
+ *              description: Bus not found in the database
+ *          500:
+ *              description: Internal server error
+ *
+ */
+
+/**
+ * @swagger
+ * /api/v1/buses/{plate}/driver:
+ *  get:
+ *      security:
+ *         - Token: []
+ *      summary: check bus driver status
+ *      description: check if the bus with given plate number has driver assigned to it
+ *      tags:
+ *          - Buses
+ *      parameters:
+ *       - in: path
+ *         name: plate
+ *         required: true
+ *         description: A valid bus plate number.
+ *      responses:
+ *          200:
+ *              description: Bus is assigned to a driver
+ *          204:
+ *              description: Bus has no driver assigned to it
  *          401:
  *              description: Unauthorized
  *          403:

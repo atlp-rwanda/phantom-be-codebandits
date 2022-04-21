@@ -47,10 +47,19 @@ export const DriverSchema = new EntitySchema({
 		user: {
 			target: 'User',
 			type: 'one-to-one',
-			cascade: true,
 			joinColumn: true,
+			cascade: true,
 			eager: true,
 			onDelete: 'CASCADE',
+		},
+		bus: {
+			target: 'Bus',
+			type: 'one-to-one',
+			cascade: true,
+			onDelete: 'SET NULL',
+			onUpdate: 'SET NULL',
+			nullable: true,
+			inverseSide: 'driver',
 		},
 	},
 });

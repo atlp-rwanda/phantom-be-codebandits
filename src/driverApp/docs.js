@@ -134,10 +134,6 @@
  *         name: id
  *         required: true
  *         description: A valid driver id.
- *       - in: headers
- *         name: Accept-Language
- *         required: false
- *         description: Choose a language
  *      responses:
  *          201:
  *              description: Return a success when a driver is deleted
@@ -145,6 +141,39 @@
  *              description: Invalid or missing accessToken
  *          404:
  *              description: Driver was not found in the database
+ *          500:
+ *              description: Something went wrong on the server
+ *
+ */
+
+/**
+ * @swagger
+ * /api/v1/drivers/{id}/bus/{plate}:
+ *  post:
+ *      security:
+ *         - Token: []
+ *      summary: Assign driver to bus
+ *      description: assign driver of given id to a bus of given plate
+ *      tags:
+ *          - Drivers
+ *      parameters:
+ *       - in: path
+ *         name: id
+ *         required: true
+ *         description: A valid driver id.
+ *       - in: path
+ *         name: plate
+ *         required: true
+ *         description: A valid bus plate.
+ *      responses:
+ *          201:
+ *              description: Return a success when a driver is assigned
+ *          401:
+ *              description: Invalid or missing accessToken
+ *          404:
+ *              description: Driver or bus was not found in the database
+ *          403:
+ *              description: Access denied
  *          500:
  *              description: Something went wrong on the server
  *
