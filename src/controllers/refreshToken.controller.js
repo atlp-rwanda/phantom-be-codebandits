@@ -1,5 +1,5 @@
-import jwt from 'jsonwebtoken';
 import 'dotenv/config';
+import jwt from 'jsonwebtoken';
 import { RefreshToken, RefreshTokenSchema } from '../models/refreshToken.js';
 import handleResponse from './handleResponse.js';
 
@@ -14,7 +14,7 @@ const refresh = async (req, res) => {
 		const refreshToken = cookies.jwt;
 		const userToken = await RefreshToken.findOneBy({ token: refreshToken });
 		if (!userToken) {
-			return handleResponse(res, 403, {
+			return handleResponse(res, 401, {
 				message: res.__('you need to login first'),
 			});
 		}
@@ -22,7 +22,7 @@ const refresh = async (req, res) => {
 		if (RefreshTokenSchema.verifyExpiration(userToken)) {
 			await userToken.remove();
 			res.clearCookie('jwt', { httpOnly: true });
-			return handleResponse(res, 403, {
+			return handleResponse(res, 401, {
 				message: res.__('you need to login first'),
 			});
 		}

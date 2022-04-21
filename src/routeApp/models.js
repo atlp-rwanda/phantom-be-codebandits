@@ -15,6 +15,13 @@ export class Route extends CustomBaseEntity {
 	origin;
 
 	destination;
+
+	static async findByCode(code) {
+		const query = await this.createQueryBuilder('route')
+			.where('route.code = :code', { code })
+			.getOne();
+		return query;
+	}
 }
 
 export const RouteSchema = new EntitySchema({
@@ -65,6 +72,15 @@ export const RouteSchema = new EntitySchema({
 			name: 'updated_at',
 			type: 'timestamp with time zone',
 			updateDate: true,
+		},
+	},
+	relations: {
+		buses: {
+			target: 'Bus',
+			type: 'one-to-many',
+			onDelete: 'SET NULL',
+			onUpdate: 'SET NULL',
+			inverseSide: 'route',
 		},
 	},
 });

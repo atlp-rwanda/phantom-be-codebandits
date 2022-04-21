@@ -56,12 +56,17 @@
  *      security:
  *         - Token: []
  *      summary: Get all buses from the database
- *      description: Expect a list of buses from the database
+ *      description: Expect a list of buses from the database. Set the relation to true if you want related route
  *      tags:
  *         - Buses
+ *      parameters:
+ *       - in: query
+ *         name: relation
+ *         required: false
+ *         description: Send if you want to receive related route
  *      responses:
  *          200:
- *              description: Return all buses from the database
+ *              description: Return all buses from the database. If relation is stated, the bus will have associated route
  *          401:
  *              description: Unauthorized
  *          403:

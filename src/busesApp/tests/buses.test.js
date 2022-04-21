@@ -114,6 +114,18 @@ describe('buses router tests', () => {
 		expect(response.body).to.have.property('code');
 		expect(response.body).to.have.property('data');
 	});
+	it('should get all buses with relations', async () => {
+		const response = await chai
+			.request(app)
+			.get('/api/v1/buses?relation=true')
+			.set('Authorization', `Bearer ${token}`);
+		expect(response).to.have.status(200);
+		expect(response.body).to.be.an('object');
+		expect(response.body).to.have.property('status');
+		expect(response.body).to.have.property('code');
+		expect(response.body).to.have.property('data');
+		expect(response.body.data[0]).to.have.property('route');
+	});
 	it('should delete a bus', async () => {
 		const deleteResponse = await chai
 			.request(app)

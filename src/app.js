@@ -37,7 +37,6 @@ app.use(
 	swaggerUi.setup(swaggerSpec, customizationOptions, { explorer: true })
 );
 
-app.use('/api/v1', apiRouter);
 app.use('/', indexRouter);
 
 app.use(errLogger);
@@ -49,8 +48,10 @@ AppDataSource.initialize()
 			logger.info(`app is listening on port ${PORT}`);
 		});
 	})
-	.catch(() => {
-		/* c8 ignore next 5 */
+	.catch((_error) => {
+		/* c8 ignore next 6 */
+		// eslint-disable-next-line no-console
+		console.log(_error);
 		logger.error(
 			"The server couldn't be started. The database is not connected"
 		);
