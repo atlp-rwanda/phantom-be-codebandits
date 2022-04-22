@@ -1,4 +1,5 @@
 import { Router } from 'express';
+import asyncHandler from '../utils/asyncHandler.js';
 import validate from '../utils/validateMiddleware.js';
 import {
 	forgotPassword,
@@ -14,13 +15,13 @@ resetPasswordRouter.post(
 	'/reset-password/:token',
 	validatePassword(),
 	validate,
-	resetPasswordCreate
+	asyncHandler(resetPasswordCreate)
 );
 resetPasswordRouter.post(
 	'/forgot-password',
 	validateEmail(),
 	validate,
-	forgotPassword
+	asyncHandler(forgotPassword)
 );
 
 export default resetPasswordRouter;

@@ -1,3 +1,4 @@
+import { AccessControl } from 'accesscontrol';
 import { matchedData } from 'express-validator';
 import {
 	deleteUser,
@@ -10,7 +11,11 @@ export const handleGetSingle = async (Model, req, res) => {
 	const { id } = req.params;
 	const userExist = await findSingleUser(Model, id);
 	if (!userExist) return handleResponse(res, 404, res.__('notFound'));
-	return handleResponse(res, 200, userExist);
+	return handleResponse(
+		res,
+		200,
+		AccessControl.filter(userExist, req.attributes)
+	);
 };
 
 export const handleDelete = async (Model, responseMessage, req, res) => {

@@ -31,9 +31,13 @@ export default {
 			'update:any': ['*'],
 			'delete:any': ['*'],
 		},
+		operators: {
+			'update:own': ['*', '!password'],
+			'read:own': ['*', '!user.password'],
+		},
 		drivers: {
 			'create:any': ['*'],
-			'read:any': ['*', '!user.password'],
+			'read:any': ['*', '!user.password', '!password'],
 			'update:any': ['*'],
 			'delete:any': ['*'],
 		},

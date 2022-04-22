@@ -1,6 +1,7 @@
 import { v4 as uuid } from 'uuid';
 import handleResponse from '../controllers/handleResponse.js';
 import { User } from '../models/user.js';
+import sendSuccessEmail from '../utils/sendSuccessEmail.js';
 import ResetToken from './models.js';
 import sendResetEmail from './utils.js';
 
@@ -51,6 +52,9 @@ export const resetPasswordCreate = async (req, res) => {
 		user.password = req.body.password;
 		await user.save();
 		await resetToken.remove();
+		const link = process.env.LOGIN_URL;
+		/* c8 ignore next 2 */
+		await sendSuccessEmail(link, user.email, user);
 		return handleResponse(res, 200, res.__('successifully_reseted'));
 	}
 
