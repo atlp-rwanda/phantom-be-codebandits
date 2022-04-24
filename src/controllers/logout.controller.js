@@ -11,7 +11,10 @@ const logout = async (req, res) => {
 	/* c8 ignore next 8 */
 	if (cookies.jwt) {
 		const token = await RefreshToken.findOneBy({ token: cookies.jwt });
-		await token.remove();
+		if (token) {
+			await token.remove();
+		}
+
 		if (!accessToken) {
 			res.cookie('jwt', '', { httpOnly: true, maxAge: 1 });
 			return handleResponse(res, 200, { message: res.__('logout successful') });

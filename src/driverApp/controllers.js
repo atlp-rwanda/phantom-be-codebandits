@@ -1,3 +1,4 @@
+import { AccessControl } from 'accesscontrol';
 import Bus from '../busesApp/models.js';
 import {
 	handleDelete,
@@ -14,16 +15,24 @@ export const getDrivers = async (req, res) => {
 	// eslint-disable-next-line no-unused-expressions
 	req.query?.relation ? (options = { relations: ['bus'] }) : (options = {});
 	const drivers = await findAllUsers(Driver, options);
-	return handleResponse(res, 200, drivers);
+	return handleResponse(
+		res,
+		200,
+		AccessControl.filter(drivers, req.attributes)
+	);
 };
 
 export const getSingleDriver = async (req, res) => {
-	handleGetSingle(Driver, req, res);
+	await handleGetSingle(Driver, req, res);
 };
 
 export const createDriver = async (req, res) => {
 	const newDriver = await createUser(Driver, req.body, 'driver');
-	return handleResponse(res, 201, newDriver);
+	return handleResponse(
+		res,
+		201,
+		AccessControl.filter(newDriver, req.attributes)
+	);
 };
 
 export const deleteDriver = async (req, res) => {
@@ -51,5 +60,9 @@ export const assignBus = async (req, res) => {
 		driverExist.user.lastName,
 		busExist.plateNumber
 	);
-	return handleResponse(res, 200, updatedBus);
+	return handleResponse(
+		res,
+		200,
+		AccessControl.filter(updatedBus, req.attributes)
+	);
 };

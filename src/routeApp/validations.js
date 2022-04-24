@@ -35,9 +35,7 @@ const routeValidation = () => [
 export const editValidation = () => [
 	body('origin', 'origin_required').optional().notEmpty(),
 	body('destination').optional().notEmpty().withMessage('destination_required'),
-	body('distance')
-		.notEmpty()
-		.withMessage('distance_required')
+	body('distance', 'distance_required')
 		.isNumeric()
 		.withMessage('number')
 		.isLength({

@@ -1,8 +1,8 @@
 import nodemailer from 'nodemailer';
 import logger from '../configs/winston.js';
-import renderAssignEmail from '../templates/assignEmail.js';
+import renderSuccessEmail from '../templates/resetSuccess.js';
 
-const sendAssignEmail = async (link, email, name, plate) => {
+const sendSuccessEmail = async (link, email, user) => {
 	const testAccount = await nodemailer.createTestAccount();
 
 	const emailOptions = {
@@ -37,17 +37,17 @@ const sendAssignEmail = async (link, email, name, plate) => {
 		from: 'phantomcodebandits@gmail.com',
 		to: email,
 		envelope: {
-			from: `Phantom sign in <phantomcodebandits@gmail.com>`,
-			to: `${name} <${email}>`,
+			from: `Phantom Password Changed <phantomcodebandits@gmail.com>`,
+			to: `${user.firstName} <${email}>`,
 		},
-		subject: 'Sign in into Phantom',
-		html: renderAssignEmail(plate, link),
+		subject: 'Password changed',
+		html: renderSuccessEmail(link),
 		text: link,
 	};
 
 	try {
 		const email = await transport.sendMail(message);
-		logger.info('Reset password email link has been sent');
+		logger.info('Password changed email link has been sent');
 		/* c8 ignore next 3 */
 		if (mode === 'test' || mode === 'development' || mode === undefined) {
 			logger.info(`PREVIEW: ${nodemailer.getTestMessageUrl(email)}`);
@@ -60,4 +60,4 @@ const sendAssignEmail = async (link, email, name, plate) => {
 	}
 };
 
-export default sendAssignEmail;
+export default sendSuccessEmail;
