@@ -7,14 +7,14 @@ const refresh = async (req, res) => {
 	try {
 		const { cookies } = req;
 		if (!cookies || !cookies.jwt) {
-			return handleResponse(res, 401, {
+			return handleResponse(res, 400, {
 				message: res.__('you need to login first'),
 			});
 		}
 		const refreshToken = cookies.jwt;
 		const userToken = await RefreshToken.findOneBy({ token: refreshToken });
 		if (!userToken) {
-			return handleResponse(res, 401, {
+			return handleResponse(res, 400, {
 				message: res.__('you need to login first'),
 			});
 		}
@@ -22,7 +22,7 @@ const refresh = async (req, res) => {
 		if (RefreshTokenSchema.verifyExpiration(userToken)) {
 			await userToken.remove();
 			res.clearCookie('jwt', { httpOnly: true });
-			return handleResponse(res, 401, {
+			return handleResponse(res, 400, {
 				message: res.__('you need to login first'),
 			});
 		}
