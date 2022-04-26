@@ -1,7 +1,7 @@
 import User from '../models/user.js';
 import { cleanModel } from '../utils/cleanModel.js';
+import EmailHandler from '../utils/EmailHandler.js';
 import passwordGenerator from '../utils/generatePassword.js';
-import sendRegisterEmail from '../utils/sendRegisterEmail.js';
 
 export const findAllUsers = async (Model, options = {}) => {
 	const drivers = await Model.find(options);
@@ -35,11 +35,14 @@ export const createUser = async (Model, userInfo, userRole) => {
 	const newUser = Model.create(userInfo);
 	newUser.user = newRelatedUser;
 	await newUser.save();
-	await sendRegisterEmail(
-		process.env.LOGIN_URL,
-		newRelatedUser.lastName,
-		newRelatedUser.email,
-		passwords.plainPassword
+	await EmailHandler(
+		'register',
+		{
+			email: newRelatedUser.email,
+			name: newRelatedUser.firstName,
+			password: passwords.plainPassword,
+		},
+		{ title: 'Account created', subject: 'A new driver account for your email' }
 	);
 
 	return newUser;

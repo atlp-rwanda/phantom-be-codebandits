@@ -41,6 +41,13 @@ describe('Operator router tests', () => {
 		expect(response).to.have.status(200);
 		token = response.body.data.access_token;
 	});
+	it('should get admin profile', async () => {
+		const response = await chai
+			.request(app)
+			.get('/api/v1/accounts/profile')
+			.set('Authorization', `Bearer ${token}`);
+		expect(response).to.have.status(200);
+	});
 	it('should test that no user in database', async () => {
 		const response = await chai
 			.request(app)
@@ -87,7 +94,9 @@ describe('Operator router tests', () => {
 			.send(data.operators.edit)
 			.set('Authorization', `Bearer ${token}`);
 		expect(response).to.have.status(200);
-		expect(response.body.data).to.contain('Operator updated successfully');
+		expect(response.body.data.message).to.contain(
+			'Operator updated successfully'
+		);
 	});
 	it('should get updated operator with updated info', async () => {
 		const response = await chai
@@ -118,7 +127,9 @@ describe('Operator router tests', () => {
 			.send(editInfo)
 			.set('Authorization', `Bearer ${token}`);
 		expect(response).to.have.status(200);
-		expect(response.body.data).to.contain('Operator updated successfully');
+		expect(response.body.data.message).to.contain(
+			'Operator updated successfully'
+		);
 	});
 	it('Should delete an operator', async () => {
 		const response = await chai
@@ -167,6 +178,7 @@ describe('Operator router tests', () => {
 		expect(response).to.have.status(200);
 		token = response.body.data.access_token;
 	});
+
 	it('should not create an operator', async () => {
 		const response = await chai
 			.request(app)

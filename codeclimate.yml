@@ -17,6 +17,6 @@ exclude_patterns:
   - "**/__tests__/"
   - "coverage/"
   - "*.test.js"
-  - "src/templates/"
+  - "src/templates/**/*.js"
   - "src/**/*{V,v}alidation.js"
   

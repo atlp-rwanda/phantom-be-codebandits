@@ -7,6 +7,7 @@ import routeRouter from '../routeApp/routes.js';
 import accountsRouter from './accountsRouter.js';
 import companyRouter from './companiesRouter.js';
 import userRouter from './userRouter.js';
+import simulateRouter from '../simulateApp/routes.js';
 
 const apiRouter = Router();
 
@@ -18,6 +19,7 @@ apiRouter.use('/companies', companyRouter);
 apiRouter.use('/drivers', driverRouter);
 apiRouter.use('/buses', busesRouter);
 apiRouter.use('/routes', routeRouter);
+apiRouter.use('/simulate', simulateRouter);
 
 apiRouter.use('/bus-to-routes', bustoroutesRouter);
 export default apiRouter;

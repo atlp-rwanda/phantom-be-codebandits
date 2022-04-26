@@ -3,9 +3,9 @@ version: "3"
 services:
   phantom_frontend:
     container_name: frontend
-    image: feyton/phantom-fe-codebandits:latest
+    image: samyshyaka/my-repository:latest
     expose:
-      - 3000
+      - 3001
     ports:
       - "3001:3001"
   phantom_db:
@@ -23,6 +23,7 @@ services:
       - PGPORT=6000
     volumes:
       - pgdata1:/var/lib/postgress/data
+ 
   redis_server:
     container_name: redis_server
     image: redis/redis-stack-server:latest
@@ -32,22 +33,24 @@ services:
       - 6379
     ports:
       - "6379:6379"
+ 
   phantom_backend:
     container_name: phantom_backend
     build:
       context: .
     expose:
       - 5000
-    env_file:
-      - ./.env
     environment:
-      - NODE_ENV=production
-
+      - DB_HOST=phantom_db
+      - DB=phantom
+      - DB_PASS=1234
+      - DB_USER=phantom
+      - DB_PORT=6000
     ports:
       - "5000:5000"
     depends_on:
       - phantom_db
       - redis_server
-  
+ 
 volumes:
   pgdata1: {}

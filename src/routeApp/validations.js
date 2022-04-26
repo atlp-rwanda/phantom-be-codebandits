@@ -27,9 +27,8 @@ const routeValidation = () => [
 		.withMessage('min_max'),
 	body('stop_points', 'geographical_coordinates')
 		.optional()
-		.isLength({
-			min: 30,
-		})
+		.toArray()
+		.isArray()
 		.withMessage('min_max'),
 ];
 export const editValidation = () => [
@@ -58,9 +57,8 @@ export const editValidation = () => [
 		.withMessage('min_max'),
 	body('stop_points', 'geographical_coordinates')
 		.optional()
-		.isLength({
-			min: 30,
-		})
+		.isArray()
+		.toArray()
 		.withMessage('min_max'),
 ];
 

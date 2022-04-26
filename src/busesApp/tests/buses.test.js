@@ -143,7 +143,7 @@ describe('buses router tests', () => {
 			.post(`/api/v1/drivers/10000000/bus/${busInfo.plateNumber}`)
 			.set('Authorization', `Bearer ${token}`);
 		expect(response).to.have.status(404);
-		expect(response.body.data).to.contain('Driver not found');
+		expect(response.body.data.message).to.contain('Driver not found');
 	});
 	it('Should not assign driver to an unregistered bus', async () => {
 		const response = await chai
@@ -151,7 +151,7 @@ describe('buses router tests', () => {
 			.post(`/api/v1/drivers/${createdDriverId}/bus/R3ABAS1`)
 			.set('Authorization', `Bearer ${token}`);
 		expect(response).to.have.status(404);
-		expect(response.body.data).to.contain('Bus not found');
+		expect(response.body.data.message).to.contain('Bus not found');
 	});
 	it('should not find the bus driver when that bus is not registered', async () => {
 		const response = await chai

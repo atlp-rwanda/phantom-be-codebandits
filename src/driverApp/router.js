@@ -4,6 +4,7 @@ import CheckPermissionAny, {
 	CheckPermissionOwn,
 } from '../middlewares/CheckPermission.js';
 import asyncHandler from '../utils/asyncHandler.js';
+import ValidateId from '../utils/ValidateId.js';
 import validate from '../utils/validateMiddleware.js';
 import {
 	assignBus,
@@ -11,6 +12,7 @@ import {
 	deleteDriver,
 	editDriver,
 	getDrivers,
+	getPublicProfile,
 	getSingleDriver,
 } from './controllers.js';
 import editValidation from './editValidation.js';
@@ -33,14 +35,17 @@ driverRouter.get(
 	CheckPermissionAny(resource),
 	asyncHandler(getDrivers)
 );
+driverRouter.get('/public-profile/:id', asyncHandler(getPublicProfile));
 driverRouter.get(
 	'/:id',
+	ValidateId,
 	verifyToken,
 	CheckPermissionOwn(resource),
 	asyncHandler(getSingleDriver)
 );
 driverRouter.put(
 	'/:id',
+	ValidateId,
 	verifyToken,
 	CheckPermissionOwn(resource),
 	editValidation(),
@@ -49,6 +54,7 @@ driverRouter.put(
 );
 driverRouter.delete(
 	'/:id',
+	ValidateId,
 	verifyToken,
 	CheckPermissionAny(resource),
 	asyncHandler(deleteDriver)
@@ -56,6 +62,7 @@ driverRouter.delete(
 
 driverRouter.post(
 	'/:id/bus/:plate',
+	ValidateId,
 	verifyToken,
 	CheckPermissionAny(resource),
 	asyncHandler(assignBus)

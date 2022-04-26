@@ -1,11 +1,15 @@
-const renderEmail = (link) => {
+import 'dotenv/config';
+
+const renderAssign = (data) => {
+	const link = process.env.LOGIN_URL;
+
 	const template = `<!doctype html>
     <html lang="en-US">
     
     <head>
         <meta content="text/html; charset=utf-8" http-equiv="Content-Type" />
-        <title>Reset Password Email</title>
-        <meta name="description" content="Reset Password Email">
+        <title>You had been assigned a bus </title>
+        <meta name="description" content="You had been assigned a bus">
         <style type="text/css">
             a:hover {
                 text-decoration: underline !important;
@@ -39,13 +43,13 @@ const renderEmail = (link) => {
                                     </tr>
                                     <tr>
                                         <td style="padding:0 35px;">
-                                            <h1 style="color:#1e1e2d; font-weight:500; margin:0;font-size:32px;font-family:'Rubik',sans-serif;">You have requested to reset your password</h1>
+                                            <h1 style="color:#1e1e2d; font-weight:500; margin:0;font-size:32px;font-family:'Rubik',sans-serif;">Update from Phantom</h1>
                                             <span style="display:inline-block; vertical-align:middle; margin:29px 0 26px; border-bottom:1px solid #cecece; width:100px;"></span>
                                             <p style="color:#455056; font-size:15px;line-height:24px; margin:0;">
-                                           To reset your password, click a button below. If it doesnt work, copy the link to the browser and follow the instructions.
+                                            You had been assigned to the Bus with plate number <strong>${data.plate}</strong> <br><br>
+                                            For more information login in into your account using the link below
                                             </p>
-                                            <a href="${link}" style="background:#1B73E8;text-decoration:none !important; font-weight:500; margin-top:35px; color:#fff;text-transform:uppercase; font-size:14px;padding:10px 24px;display:inline-block;border-radius:50px;">Reset
-                                                Password for your phantom account</a> 
+                                            <a href="${link}" style="background:#1B73E8;text-decoration:none !important; font-weight:500; margin-top:35px; color:#fff;text-transform:uppercase; font-size:14px;padding:10px 24px;display:inline-block;border-radius:50px;">Login in into your account</a> 
                                         </td>
                                     </tr>
                                     <tr>
@@ -70,9 +74,10 @@ const renderEmail = (link) => {
                 </tr>
         </table>
     </body>
-    
-    </html>`;
-	return template;
+    `;
+
+	const plain = `${link}`;
+	return { html: template, plain };
 };
 
-export default renderEmail;
+export default renderAssign;

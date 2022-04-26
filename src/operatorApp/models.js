@@ -35,6 +35,10 @@ export const OperatorSchema = new EntitySchema({
 		company: {
 			type: 'varchar',
 		},
+		userId: {
+			nullable: true,
+			type: 'int',
+		},
 	},
 	relations: {
 		user: {

@@ -48,6 +48,12 @@ export const UserSchema = new EntitySchema({
 			type: 'varchar',
 			default: 'user',
 		},
+		image: {
+			type: 'varchar',
+			required: false,
+			default:
+				'https://res.cloudinary.com/feyton/image/upload/v1643272521/user_nophzu.png',
+		},
 	},
 });
 

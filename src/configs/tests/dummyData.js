@@ -135,6 +135,18 @@ const dataFn = async () => {
 				destination: 'Remera',
 				distance: 146,
 			},
+			withPoints: {
+				origin: 'Nyabugogo',
+				destination: 'Kabuga',
+				distance: 146,
+				code: 'RN4STYI',
+				stop_points: [
+					{ lat: -1.93667, lng: 30.05352 },
+					{ lat: -1.93662, lng: 30.05353 },
+					{ lat: -1.9363, lng: 30.05357 },
+					{ lat: -1.93596, lng: 30.05361 },
+				],
+			},
 		},
 	};
 

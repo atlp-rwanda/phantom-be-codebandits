@@ -66,6 +66,18 @@ describe('driver router tests', () => {
 			.set('Authorization', `Bearer ${token}`);
 		expect(response).to.have.status(200);
 	});
+	it('should get a driver public ID', async () => {
+		const response = await chai
+			.request(app)
+			.get(`/api/v1/drivers/public-profile/${createdDriverId}`);
+		expect(response).to.have.status(200);
+	});
+	it('should not get a driver public for non existent driver', async () => {
+		const response = await chai
+			.request(app)
+			.get(`/api/v1/drivers/public-profile/${createdDriverId + 200}`);
+		expect(response).to.have.status(404);
+	});
 	it('should edit a driver', async () => {
 		const response = await chai
 			.request(app)
@@ -73,7 +85,9 @@ describe('driver router tests', () => {
 			.send(data.drivers.edit)
 			.set('Authorization', `Bearer ${token}`);
 		expect(response).to.have.status(200);
-		expect(response.body.data).to.contain('Driver updated successfully');
+		expect(response.body.data.message).to.contain(
+			'Driver updated successfully'
+		);
 	});
 	it('should get updated driver with updated info', async () => {
 		const response = await chai

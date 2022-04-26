@@ -7,7 +7,7 @@ import {
 } from '../controllers/baseControllers.js';
 import handleResponse from '../controllers/handleResponse.js';
 import { createUser, findAllUsers } from '../services/baseServices.js';
-import sendAssignEmail from '../utils/sendAssignEmail.js';
+import EmailHandler from '../utils/EmailHandler.js';
 import { Driver } from './models.js';
 
 export const getDrivers = async (req, res) => {
@@ -24,6 +24,29 @@ export const getDrivers = async (req, res) => {
 
 export const getSingleDriver = async (req, res) => {
 	await handleGetSingle(Driver, req, res);
+};
+
+export const getPublicProfile = async (req, res) => {
+	const { id } = req.params;
+	const driver = await Driver.findOne({
+		where: { id },
+		relations: ['bus', 'bus.route'],
+	});
+	if (!driver) return handleResponse(res, 404, 'Not found');
+	return handleResponse(
+		res,
+		200,
+		AccessControl.filter(driver, [
+			'user.firstName',
+			'user.lastName',
+			'user.email',
+			'bus.plateNumber',
+			'bus.company',
+			'bus.route.origin',
+			'bus.route.destination',
+			'user.image',
+		])
+	);
 };
 
 export const createDriver = async (req, res) => {
@@ -54,11 +77,14 @@ export const assignBus = async (req, res) => {
 	const updatedBus = await Bus.updateById(busExist.id, data);
 	busExist.driver = driverExist;
 	await busExist.save();
-	await sendAssignEmail(
-		process.env.LOGIN_URL,
-		driverExist.user.email,
-		driverExist.user.lastName,
-		busExist.plateNumber
+	await EmailHandler(
+		'assign-success',
+		{
+			email: driverExist.user.email,
+			name: driverExist.user.firstName,
+			plate: busExist.plateNumber,
+		},
+		{ title: 'Bus assignment', subject: 'Assigned to a new bus' }
 	);
 	return handleResponse(
 		res,

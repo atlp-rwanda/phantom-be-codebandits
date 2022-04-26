@@ -141,7 +141,7 @@ describe('Route router tests', async () => {
 			.delete(`/api/v1/routes/${routeEdit}`)
 			.set('Authorization', `Bearer ${token}`);
 		expect(res).to.have.status(200);
-		expect(res.body.data).to.contain('Route deleted successfully');
+		expect(res.body.data.message).to.contain('Route deleted successfully');
 	});
 	it('should not delete route that does not exist', async () => {
 		const res = await chai
