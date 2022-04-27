@@ -89,7 +89,7 @@ describe('driver router tests', () => {
 			.to.equal('Samuel');
 		expect(response.body.data)
 			.to.have.property('mobileNumber')
-			.to.equal('0788231378');
+			.to.equal('0788352746');
 	});
 	it('should get all drivers', async () => {
 		const response = await chai

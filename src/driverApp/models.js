@@ -42,6 +42,14 @@ export const DriverSchema = new EntitySchema({
 			type: 'varchar',
 			unique: true,
 		},
+		userId: {
+			nullable: true,
+			type: 'int',
+		},
+		busId: {
+			nullable: true,
+			type: 'int',
+		},
 	},
 	relations: {
 		user: {

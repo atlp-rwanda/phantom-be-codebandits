@@ -25,7 +25,7 @@ export const updateBus = async (Model, busId, editInfo) => {
 	const bus = await Model.findOneBy({ id: busId });
 	if (!bus) return false;
 
-	await Model.update(bus, editInfo);
+	await Model.updateById(bus.id, editInfo);
 	return true;
 };
 
