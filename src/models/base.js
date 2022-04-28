@@ -5,7 +5,11 @@ class CustomBaseEntity extends BaseEntity {
 
 	static async updateById(id, data) {
 		const instance = await this.findOne({ where: { id } });
-		await this.createQueryBuilder().update(instance).set(data).execute();
+		await this.createQueryBuilder()
+			.update(instance)
+			.set(data)
+			.where('id = :id', { id })
+			.execute();
 		const updatedInstance = await this.findOne({ where: { id } });
 		return { updatedInstance };
 	}

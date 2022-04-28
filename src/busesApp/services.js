@@ -24,7 +24,13 @@ export const findBuses = async (options = {}) => {
 export const updateBus = async (Model, busId, editInfo) => {
 	const bus = await Model.findOneBy({ id: busId });
 	if (!bus) return false;
-
+	if (
+		editInfo.plateNumber !== undefined &&
+		bus.plateNumber !== editInfo.plateNumber
+	) {
+		const exist = await Model.findByPlate(editInfo.plateNumber);
+		if (exist) return null;
+	}
 	await Model.updateById(bus.id, editInfo);
 	return true;
 };

@@ -46,8 +46,10 @@ export const putBusHandler = async (req, res) => {
 	const data = matchedData(req, {
 		optional: false,
 	});
-
 	const bus = await updateBus(Bus, id, data);
+	if (bus === null) {
+		return handleResponse(res, 409, { message: res.__('Bus already exists') });
+	}
 	if (!bus)
 		return handleResponse(res, 404, { message: res.__('Bus not found') });
 	return handleResponse(res, 200, res.__('Bus updated'));

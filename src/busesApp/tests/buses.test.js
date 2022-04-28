@@ -69,6 +69,19 @@ describe('buses router tests', () => {
 		const response = await chai
 			.request(app)
 			.post('/api/v1/buses')
+			.send(data.buses.valid2)
+			.set('Authorization', `Bearer ${token}`);
+		expect(response).to.have.status(201);
+		expect(response.body).to.be.an('object');
+		expect(response.body).to.have.property('status');
+		expect(response.body).to.have.property('code');
+		expect(response.body).to.have.property('data');
+		createdBusId = response.body.data.id;
+	});
+	it('should create a second  new bus', async () => {
+		const response = await chai
+			.request(app)
+			.post('/api/v1/buses')
 			.send(busInfo)
 			.set('Authorization', `Bearer ${token}`);
 		expect(response).to.have.status(201);
@@ -159,6 +172,17 @@ describe('buses router tests', () => {
 		expect(response.body).to.have.property('status');
 		expect(response.body).to.have.property('code');
 		expect(response.body).to.have.property('data');
+	});
+	it('should not update bus update the bus', async () => {
+		const response = await chai
+			.request(app)
+			.put(`/api/v1/buses/${createdBusId}`)
+			.send(data.buses.valid2)
+			.set('Authorization', `Bearer ${token}`);
+		expect(response).to.have.status(409);
+		expect(response.body).to.be.an('object');
+		expect(response.body).to.have.property('status');
+		expect(response.body).to.have.property('code');
 	});
 
 	it('should get all buses', async () => {
