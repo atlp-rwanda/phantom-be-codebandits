@@ -1,8 +1,7 @@
-import { BaseEntity, EntitySchema } from 'typeorm';
+import { EntitySchema } from 'typeorm';
+import CustomBaseEntity from './base.js';
 
-export class User extends BaseEntity {
-	id;
-
+export class User extends CustomBaseEntity {
 	email;
 
 	password;
@@ -12,12 +11,6 @@ export class User extends BaseEntity {
 	lastName;
 
 	role;
-
-	static async createAndSave(data) {
-		const user = this.create(data);
-		const saveUser = await user.save();
-		return saveUser;
-	}
 }
 
 export const UserSchema = new EntitySchema({

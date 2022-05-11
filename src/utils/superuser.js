@@ -2,13 +2,11 @@
 /* c8 ignore file */
 
 import asyncjs from 'async';
-import bcrypt from 'bcrypt';
 import chalk from 'chalk';
 import { createInterface } from 'readline';
 import logger from '../configs/winston.js';
 import AppDataSource from '../data-source.js';
 import User from '../models/user.js';
-import sendRegisterEmail from './sendRegisterEmail.js';
 var validRegex =
 	/^[a-zA-Z0-9.!#$%&'*+/=?^_`{|}~-]+@[a-zA-Z0-9-]+(?:\.[a-zA-Z0-9-]+)*$/;
 
@@ -122,31 +120,22 @@ Welcome to the interface for creating admins\nStarting....`;
 				],
 				async () => {
 					info.role = 'admin';
-					const plainPassword = info.password;
-					info.password = await bcrypt.hash(info.password, 10);
 					rl.close();
-					const user = User.create(info);
 					try {
 						chalk.bold.green('Creating the account......');
-						const savedUser = await user.save();
-						await sendRegisterEmail(
-							loginLink,
-							info.firstName,
-							info.email,
-							plainPassword
-						);
+						await User.createAndSave(info);
 						console.log(
 							chalk.greenBright(
-								'A new super user created. Login credentials has been sent to registed email: '
+								'A new super user created. Login with your credentials.'
 							)
 						);
-						console.log(prompt(savedUser.email));
+						console.log(prompt(info.email));
 						console.log(prompt('\nWelcome...\nQuittiiinnng...'));
 						process.exit(0);
 					} catch (error) {
 						console.log(
 							chalk.red(
-								'Probably that user exists or something went teribly wrong.'
+								'Probably that user exists or something went terribly wrong.'
 							)
 						);
 						console.log(error.message);

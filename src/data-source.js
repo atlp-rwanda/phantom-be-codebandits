@@ -7,6 +7,9 @@ import { RefreshTokenSchema } from './models/refreshToken.js';
 import { UserSchema } from './models/user.js';
 import { OperatorSchema } from './operatorApp/models.js';
 import { RouteSchema } from './routeApp/models.js';
+import DriverSubscriber from './Subscribers/DriverSubscriber.js';
+import ResetTokenSubscriber from './Subscribers/ResetTokenSubscriber.js';
+import UserSubscriber from './Subscribers/UserSubscriber.js';
 import { ResetTokenSchema } from './userApp/models.js';
 
 let options = {
@@ -28,7 +31,7 @@ let options = {
 		RouteSchema,
 	],
 	migrations: ['./migration/*.js'],
-	subscribers: [],
+	subscribers: [UserSubscriber, DriverSubscriber, ResetTokenSubscriber],
 	cli: {
 		migrationsDir: './migration/',
 	},
