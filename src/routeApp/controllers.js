@@ -6,7 +6,7 @@ import { RouteCodeGenerator } from './utils.js';
 
 export const getRoutes = async (req, res) => {
 	const routes = await Route.find({
-		select: ['origin', 'destination', 'code', 'id'],
+		select: ['origin', 'destination', 'code', 'id', 'distance'],
 	});
 	return handleResponse(res, 200, routes);
 };

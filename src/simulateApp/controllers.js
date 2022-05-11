@@ -36,7 +36,7 @@ export const getOptions = async (req, res) => {
 };
 
 export const checkTripInProgress = async (req, res) => {
-	const { plate } = req.body;
+	const { plate } = req.params;
 	const trip = await getTripByPlate(plate);
 	if (trip) {
 		return handleResponse(res, 200, trip);

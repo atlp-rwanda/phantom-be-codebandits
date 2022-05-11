@@ -25,7 +25,7 @@ export const getBusHandler = async (req, res) => {
 	let options;
 	// eslint-disable-next-line no-unused-expressions
 	req.query?.relation === 'true'
-		? (options = { relations: ['route'] })
+		? (options = { relations: ['route', 'driver'] })
 		: (options = {});
 	const buses = await findBuses(options);
 	return handleResponse(res, 200, buses);

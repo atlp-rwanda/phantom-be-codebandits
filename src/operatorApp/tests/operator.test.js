@@ -48,6 +48,14 @@ describe('Operator router tests', () => {
 			.set('Authorization', `Bearer ${token}`);
 		expect(response).to.have.status(200);
 	});
+	it('should update admin profile', async () => {
+		const response = await chai
+			.request(app)
+			.post('/api/v1/accounts/profile')
+			.send({ firstName: 'Feyton' })
+			.set('Authorization', `Bearer ${token}`);
+		expect(response).to.have.status(200);
+	});
 	it('should test that no user in database', async () => {
 		const response = await chai
 			.request(app)

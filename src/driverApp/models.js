@@ -1,8 +1,7 @@
-import { BaseEntity, EntitySchema } from 'typeorm';
+import { EntitySchema } from 'typeorm';
+import CustomBaseEntity from '../models/base.js';
 
-export class Driver extends BaseEntity {
-	id;
-
+export class Driver extends CustomBaseEntity {
 	mobileNumber;
 
 	company;
