@@ -5,6 +5,7 @@ import CheckPermissionAny, {
 	CheckPermissionOwn,
 } from '../middlewares/CheckPermission.js';
 import asyncHandler from '../utils/asyncHandler.js';
+import ValidateId from '../utils/ValidateId.js';
 import validate from '../utils/validateMiddleware.js';
 import {
 	createOperator,
@@ -26,6 +27,7 @@ operatorRouter.get(
 );
 operatorRouter.get(
 	'/:id',
+	ValidateId,
 	verifyToken,
 	CheckPermissionOwn(resource),
 	asyncHandler(getSingleOperator)
@@ -40,6 +42,7 @@ operatorRouter.post(
 );
 operatorRouter.put(
 	'/:id',
+	ValidateId,
 	verifyToken,
 	CheckPermissionOwn(resource),
 	editValidation(),
@@ -48,6 +51,7 @@ operatorRouter.put(
 );
 operatorRouter.delete(
 	'/:id',
+	ValidateId,
 	verifyToken,
 	CheckPermissionAny(resource),
 	asyncHandler(deleteOperator)

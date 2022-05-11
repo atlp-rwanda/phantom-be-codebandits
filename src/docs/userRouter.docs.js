@@ -62,5 +62,5 @@
  *          400:
  *              description: Invalid request or duplicate data has been found
  *          409:
- *              description: Email already exist in the database
+ *              $ref: "#/components/responses/conflictResponse"
  */

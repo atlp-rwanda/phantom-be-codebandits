@@ -2,6 +2,7 @@ import { Router } from 'express';
 import verifyToken from '../middlewares/authJwt.js';
 import CheckPermissionAny from '../middlewares/CheckPermission.js';
 import asyncHandler from '../utils/asyncHandler.js';
+import ValidateId from '../utils/ValidateId.js';
 import validate from '../utils/validateMiddleware.js';
 import {
 	createRoute,
@@ -31,18 +32,21 @@ routeRouter.post(
 );
 routeRouter.get(
 	'/:id',
+	ValidateId,
 	verifyToken,
 	CheckPermissionAny(resource),
 	asyncHandler(getSingleRoute)
 );
 routeRouter.delete(
 	'/:id',
+	ValidateId,
 	verifyToken,
 	CheckPermissionAny(resource),
 	asyncHandler(deleteRoute)
 );
 routeRouter.put(
 	'/:id',
+	ValidateId,
 	verifyToken,
 	CheckPermissionAny(resource),
 	editValidation(),

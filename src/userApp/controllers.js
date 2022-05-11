@@ -1,9 +1,8 @@
 import { v4 as uuid } from 'uuid';
 import handleResponse from '../controllers/handleResponse.js';
 import { User } from '../models/user.js';
-import sendSuccessEmail from '../utils/sendSuccessEmail.js';
+import EmailHandler from '../utils/EmailHandler.js';
 import ResetToken from './models.js';
-import sendResetEmail from './utils.js';
 
 export const forgotPassword = async (req, res) => {
 	const user = await User.findOneBy({ email: req.body.email });
@@ -25,8 +24,11 @@ export const forgotPassword = async (req, res) => {
 	const { token } = resetToken;
 
 	const link = `${process.env.RESET_URL}/${token}`;
-	await sendResetEmail(link, req.body.email, user);
-
+	await EmailHandler(
+		'reset',
+		{ link, email: req.body.email, name: user.firstName },
+		{ title: 'Reset Password', subject: 'Password reset link' }
+	);
 	return handleResponse(res, 200, { message: res.__('link_sent') });
 };
 
@@ -54,7 +56,11 @@ export const resetPasswordCreate = async (req, res) => {
 		await resetToken.remove();
 		const link = process.env.LOGIN_URL;
 		/* c8 ignore next 2 */
-		await sendSuccessEmail(link, user.email, user);
+		await EmailHandler(
+			'reset-success',
+			{ email: user.email, name: user.firstName, link },
+			{ title: 'Password Changed', subject: 'Password changed successfully' }
+		);
 		return handleResponse(res, 200, res.__('successifully_reseted'));
 	}
 

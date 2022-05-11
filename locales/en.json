@@ -79,5 +79,7 @@
 	"driver_not_found": "Driver not found",
 	"driver_assigned": "Driver assigned bus successfully",
 	"bus_has_driver": "Bus is assigned to a driver",
-	"bus_no_driver": "Bus has no driver assigned"
+	"bus_no_driver": "Bus has no driver assigned",
+	"Invalid or expired token": "Invalid or expired token",
+	"Unauthorized with token": "Unauthorized with token"
 }

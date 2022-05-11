@@ -20,6 +20,7 @@ const logout = async (req, res) => {
 			return handleResponse(res, 200, { message: res.__('logout successful') });
 		}
 	}
+	return handleResponse(res, 200, { message: res.__('logout successful') });
 };
 
 export { logout };

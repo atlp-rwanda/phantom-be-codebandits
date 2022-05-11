@@ -1,12 +1,13 @@
 import { matchedData } from 'express-validator';
 import handleResponse from '../controllers/handleResponse.js';
-import { findAllUsers as findAllRoutes } from '../services/baseServices.js';
 import Route from './models.js';
 import { handelDeleteRoute, handeleditRoute } from './services.js';
 import { RouteCodeGenerator } from './utils.js';
 
 export const getRoutes = async (req, res) => {
-	const routes = await findAllRoutes(Route, res);
+	const routes = await Route.find({
+		select: ['origin', 'destination', 'code', 'id'],
+	});
 	return handleResponse(res, 200, routes);
 };
 
