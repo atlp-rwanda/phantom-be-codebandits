@@ -25,13 +25,16 @@ export class Route extends CustomBaseEntity {
 
 	getStartCoor() {
 		const coor = {};
+
 		if (this.start_coor) {
-			coor.start = this.start_coor;
+			const parsed = this.start_coor.split(',');
+			coor.start = { lat: parsed[0].trim(), lng: parsed[1].trim() };
 		} else {
 			coor.start = JSON.parse(this.stop_points[0]);
 		}
 		if (this.end_coor) {
-			coor.end = this.end_coor;
+			const parsed = this.end_coor.split(',');
+			coor.end = { lat: parsed[0].trim(), lng: parsed[1].trim() };
 		} else {
 			coor.end = JSON.parse(this.stop_points.slice(-1));
 		}
@@ -64,10 +67,32 @@ export const RouteSchema = new EntitySchema({
 		start_coor: {
 			type: 'point',
 			nullable: true,
+			transformer: {
+				from(value1) {
+					if (value1?.x) {
+						return `${value1.x}, ${value1.y}`;
+					}
+					return value1;
+				},
+				to(value1) {
+					return value1;
+				},
+			},
 		},
 		end_coor: {
 			type: 'point',
 			nullable: true,
+			transformer: {
+				from(value1) {
+					if (value1?.x) {
+						return `${value1.x}, ${value1.y}`;
+					}
+					return value1;
+				},
+				to(value1) {
+					return value1;
+				},
+			},
 		},
 		stop_points: {
 			type: 'varchar',

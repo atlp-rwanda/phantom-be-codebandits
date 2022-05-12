@@ -25,10 +25,9 @@ const __dirname = path.resolve();
 const PORT = process.env.PORT || 5000;
 /* c8 ignore next stop */
 const app = express();
-
+app.use(express.json({ limit: '30mb', extended: true }));
 app.use(cors(corsOptions));
 app.use(reqLogger);
-app.use(express.json());
 app.use(cookieParser());
 app.use(express.static(path.join(__dirname, 'public')));
 app.use(express.urlencoded({ extended: true }));
