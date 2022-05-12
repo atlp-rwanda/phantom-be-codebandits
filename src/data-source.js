@@ -2,11 +2,11 @@
 import 'reflect-metadata';
 import { DataSource } from 'typeorm';
 import { BusSchema } from './busesApp/models.js';
-import { RouteSchema } from './routeApp/models.js';
 import { DriverSchema } from './driverApp/models.js';
 import { RefreshTokenSchema } from './models/refreshToken.js';
 import { UserSchema } from './models/user.js';
 import { OperatorSchema } from './operatorApp/models.js';
+import { RouteSchema } from './routeApp/models.js';
 import { ResetTokenSchema } from './userApp/models.js';
 
 let options = {
@@ -41,6 +41,16 @@ if (process.env.NODE_ENV === 'production') {
 			ssl: {
 				rejectUnauthorized: false,
 			},
+		},
+		cache: {
+			duration: 120000,
+			type: 'redis',
+			options: {
+				host: process.env.REDIS_HEROKU_HOST,
+				password: process.env.REDIS_HEROKU_PASS,
+				port: process.env.REDIS_HEROKU_PORT,
+			},
+			ignoreErrors: true,
 		},
 	});
 }

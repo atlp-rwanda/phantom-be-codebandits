@@ -51,11 +51,27 @@ describe('PROFILE VIEW', () => {
 			.set('Authorization', `Bearer ${token}`);
 		expect(res).to.have.status(200);
 	});
+	it('should update a driver profile', async () => {
+		const res = await chai
+			.request(app)
+			.post('/api/v1/accounts/profile')
+			.send({ firstName: 'Feyton', mobileNumber: '0788498955' })
+			.set('Authorization', `Bearer ${token}`);
+		expect(res).to.have.status(200);
+	});
 	it('should return 404 as user does not exist', async () => {
 		token = signTestToken({ id: 10000, role: 'driver' });
 		const res = await chai
 			.request(app)
 			.get('/api/v1/accounts/profile')
+			.set('Authorization', `Bearer ${token}`);
+		expect(res).to.have.status(404);
+	});
+	it('should return 404 as user does not exist', async () => {
+		token = signTestToken({ id: 10000, role: 'driver' });
+		const res = await chai
+			.request(app)
+			.post('/api/v1/accounts/profile')
 			.set('Authorization', `Bearer ${token}`);
 		expect(res).to.have.status(404);
 	});
@@ -74,6 +90,17 @@ describe('PROFILE VIEW', () => {
 		const res = await chai
 			.request(app)
 			.get('/api/v1/accounts/profile')
+			.set('Authorization', `Bearer ${token}`);
+		expect(res).to.have.status(200);
+	});
+	it('Update profile of operator', async () => {
+		const res = await chai
+			.request(app)
+			.post('/api/v1/accounts/profile')
+			.send({
+				firstName: 'Abdul',
+				mobileNumber: '0788498955',
+			})
 			.set('Authorization', `Bearer ${token}`);
 		expect(res).to.have.status(200);
 	});

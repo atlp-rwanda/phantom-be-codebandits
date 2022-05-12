@@ -31,6 +31,7 @@ const AuthHandler = async (req, res) => {
 			return handleResponse(res, 200, {
 				first_name: user.firstName,
 				role: user.role,
+				image: user.image,
 				access_token: accessToken,
 			});
 		}

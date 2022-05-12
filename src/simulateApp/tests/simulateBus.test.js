@@ -76,6 +76,11 @@ describe('SIMULATE BUS MOTION', () => {
 			.to.haveOwnProperty('message')
 			.to.eql('Not allowed to start the bus without route');
 	});
+	it('Should get the trip for bus buses', async () => {
+		const res = await chai.request(app).get(`/api/v1/simulate/check/${plate1}`);
+		expect(res).to.have.status(400);
+		expect(res.body.data).to.have.property('message');
+	});
 
 	it('Should start the trip', async () => {
 		// Assign route to bus
@@ -104,6 +109,10 @@ describe('SIMULATE BUS MOTION', () => {
 		const res = await chai.request(app).get('/api/v1/simulate');
 		expect(res).to.have.status(200);
 		expect(res.body.data).to.have.length(1);
+	});
+	it('Should get the trip for bus buses', async () => {
+		const res = await chai.request(app).get(`/api/v1/simulate/check/${plate1}`);
+		expect(res).to.have.status(200);
 	});
 	it('Should get all available routes as options', async () => {
 		const res = await chai.request(app).get('/api/v1/simulate/options');

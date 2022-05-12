@@ -104,6 +104,13 @@ describe('Route router tests', async () => {
 			.set('Authorization', `Bearer ${token}`);
 		expect(response).to.have.status(404);
 	});
+	it('should not get route with malformed id', async () => {
+		const response = await chai
+			.request(app)
+			.get(`/api/v1/routes/null`)
+			.set('Authorization', `Bearer ${token}`);
+		expect(response).to.have.status(404);
+	});
 	it('should Edit Route', async () => {
 		const editRoute = data.routes.edit;
 		const response = await chai
