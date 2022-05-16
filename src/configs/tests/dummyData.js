@@ -1,7 +1,5 @@
-import bcrypt from 'bcrypt';
-
-const dataFn = async () => {
-	const password = await bcrypt.hash('Andela@1234', 5);
+const dataFn = () => {
+	const password = 'Andela@1234';
 	const data = {
 		users: {
 			admin: {

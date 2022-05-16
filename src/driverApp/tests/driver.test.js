@@ -21,9 +21,8 @@ describe('driver router tests', () => {
 	let token;
 	let createdDriverId;
 	let driverInfo;
-	let data;
+	const data = dataFn();
 	it('should login an operator user', async () => {
-		data = await dataFn();
 		driverInfo = data.drivers.valid;
 		const user = await User.createAndSave(data.users.operator);
 		const info = { email: user.email, password: 'Andela@1234' };

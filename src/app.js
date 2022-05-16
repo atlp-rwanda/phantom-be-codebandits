@@ -16,6 +16,7 @@ import { AppDataSource } from './data-source.js';
 import apiRouter from './routes/apiRouter.js';
 import indexRouter from './routes/indexRouter.js';
 import { BusRepository } from './simulateApp/models.js';
+import Trip from './tripApp/models.js';
 import errLogger from './utils/errorLogger.js';
 
 const swaggerSpec = swaggerJSDoc(options);
@@ -88,7 +89,16 @@ io.on('connection', (socket) => {
 		});
 	});
 	socket.on('bus_stop', async (data) => {
-		io.emit('bus_stop', data);
+		const { history, ...other } = data;
+		io.emit('bus_stop', other);
+		try {
+			Trip.createAndSave({
+				path: JSON.stringify(history),
+				info: JSON.stringify(other),
+			});
+		} catch (error) {
+			logger.error(error.message);
+		}
 	});
 	socket.on('bus_alert', async (data) => {
 		if (!data.id) {

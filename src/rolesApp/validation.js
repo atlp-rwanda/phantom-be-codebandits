@@ -1,4 +1,3 @@
-import bcrypt from 'bcrypt';
 import { body } from 'express-validator';
 import User from '../models/user.js';
 
@@ -13,13 +12,7 @@ export const createUserValidation = () => [
 			// eslint-disable-next-line prefer-promise-reject-errors
 			if (user) return Promise.reject('user_conflict');
 		}),
-	body('password', 'A strong password required')
-		.isStrongPassword()
-		.bail()
-		.customSanitizer((value) => {
-			const hash = bcrypt.hash(value, 10);
-			return hash;
-		}),
+	body('password', 'A strong password required').isStrongPassword().bail(),
 	body('firstName', 'This too is required').notEmpty(),
 	body('lastName', 'This too is required').notEmpty(),
 	body('role', 'This too is required').notEmpty(),

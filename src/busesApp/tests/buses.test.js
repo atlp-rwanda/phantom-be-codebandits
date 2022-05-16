@@ -27,9 +27,8 @@ describe('buses router tests', () => {
 	let createdBusId;
 	let busInfo;
 	let createdDriverId;
-	let data;
+	const data = dataFn();
 	it('should login an operator user', async () => {
-		data = await dataFn();
 		busInfo = data.buses.valid;
 		const user = await User.createAndSave(data.users.operator);
 		const info = { email: user.email, password: 'Andela@1234' };

@@ -7,8 +7,9 @@ import { RefreshTokenSchema } from './models/refreshToken.js';
 import { UserSchema } from './models/user.js';
 import { OperatorSchema } from './operatorApp/models.js';
 import { RouteSchema } from './routeApp/models.js';
+import UserSubscriber from './subscribers/User.js';
+import { TripSchema } from './tripApp/models.js';
 import { ResetTokenSchema } from './userApp/models.js';
-
 let options = {
 	type: 'postgres',
 	host: process.env.DB_HOST,
@@ -26,9 +27,10 @@ let options = {
 		ResetTokenSchema,
 		BusSchema,
 		RouteSchema,
+		TripSchema,
 	],
 	migrations: ['./migration/*.js'],
-	subscribers: [],
+	subscribers: [UserSubscriber],
 	cli: {
 		migrationsDir: './migration/',
 	},
@@ -37,18 +39,12 @@ let options = {
 /* c8 ignore start  */
 if (process.env.NODE_ENV === 'production') {
 	Object.assign(options, {
-		extra: {
-			ssl: {
-				rejectUnauthorized: false,
-			},
-		},
 		cache: {
 			duration: 120000,
 			type: 'redis',
 			options: {
-				host: process.env.REDIS_HEROKU_HOST,
-				password: process.env.REDIS_HEROKU_PASS,
-				port: process.env.REDIS_HEROKU_PORT,
+				host: 'localhost',
+				port: 6000,
 			},
 			ignoreErrors: true,
 		},
