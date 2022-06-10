@@ -10,7 +10,7 @@ chai.use(chaiHttp);
 chai.should();
 
 describe('Operator router tests', () => {
-	let data;
+	const data = dataFn();
 	let operatorInfo;
 	before(async () => {
 		try {
@@ -21,7 +21,6 @@ describe('Operator router tests', () => {
 		}
 	});
 	it('Should setup tests', async () => {
-		data = await dataFn();
 		expect(data.users.admin)
 			.to.have.property('email')
 			.to.equal('admin@gmail.com');

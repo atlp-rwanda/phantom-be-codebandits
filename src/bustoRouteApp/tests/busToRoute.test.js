@@ -27,11 +27,10 @@ describe('ASSIGN BUS TO ROUTE', async () => {
 	let code1;
 	let code2;
 	let token;
-	let data;
+	const data = dataFn();
 	let routeId;
 
 	it('should login an admin user', async () => {
-		data = await dataFn();
 		const user = await User.createAndSave(data.users.admin);
 		const info = { email: user.email, password: 'Andela@1234' };
 		const response = await chai

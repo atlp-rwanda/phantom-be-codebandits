@@ -1,4 +1,3 @@
-import bcrypt from 'bcrypt';
 import chai, { expect } from 'chai';
 import chaiHttp from 'chai-http';
 import app from '../../app.js';
@@ -21,7 +20,7 @@ describe('ROLES AND PERMISSIONS', async () => {
 	let userId;
 	describe('Driver accessing routes', async () => {
 		before(async () => {
-			const password = await bcrypt.hash('Andela@1234', 5);
+			const password = 'Andela@1234';
 			const user = {
 				email: 'driver@gmail.com',
 				password,
@@ -76,7 +75,7 @@ describe('ROLES AND PERMISSIONS', async () => {
 	});
 	describe('Operator accessing drivers', async () => {
 		before(async () => {
-			const password = await bcrypt.hash('Andela@1234', 5);
+			const password = 'Andela@1234';
 			const user = {
 				email: 'operator@gmail.com',
 				password,

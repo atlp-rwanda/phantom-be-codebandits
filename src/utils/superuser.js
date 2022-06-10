@@ -8,7 +8,6 @@ import { createInterface } from 'readline';
 import logger from '../configs/winston.js';
 import AppDataSource from '../data-source.js';
 import User from '../models/user.js';
-import sendRegisterEmail from './sendRegisterEmail.js';
 var validRegex =
 	/^[a-zA-Z0-9.!#$%&'*+/=?^_`{|}~-]+@[a-zA-Z0-9-]+(?:\.[a-zA-Z0-9-]+)*$/;
 
@@ -129,12 +128,6 @@ Welcome to the interface for creating admins\nStarting....`;
 					try {
 						chalk.bold.green('Creating the account......');
 						const savedUser = await user.save();
-						await sendRegisterEmail(
-							loginLink,
-							info.firstName,
-							info.email,
-							plainPassword
-						);
 						console.log(
 							chalk.greenBright(
 								'A new super user created. Login credentials has been sent to registed email: '

@@ -1,4 +1,3 @@
-import bcrypt from 'bcrypt';
 import { body } from 'express-validator';
 
 const validatePassword = () => [
@@ -7,11 +6,7 @@ const validatePassword = () => [
 		.withMessage('password_required')
 		.isStrongPassword()
 		.withMessage('strong_password')
-		.bail()
-		.customSanitizer((value) => {
-			const hash = bcrypt.hash(value, 10);
-			return hash;
-		}),
+		.bail(),
 ];
 
 export default validatePassword;

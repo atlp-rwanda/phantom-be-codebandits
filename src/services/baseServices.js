@@ -24,10 +24,10 @@ export const deleteUser = async (Model, userId) => {
 };
 
 export const createUser = async (Model, userInfo, userRole) => {
-	const passwords = await passwordGenerator();
+	const password = passwordGenerator();
 	const newRelatedUser = User.create({
 		email: userInfo.email,
-		password: passwords.hashedPassword,
+		password,
 		firstName: userInfo.firstName,
 		lastName: userInfo.lastName,
 		role: userRole,
@@ -40,7 +40,7 @@ export const createUser = async (Model, userInfo, userRole) => {
 		{
 			email: newRelatedUser.email,
 			name: newRelatedUser.firstName,
-			password: passwords.plainPassword,
+			password,
 		},
 		{ title: 'Account created', subject: 'A new driver account for your email' }
 	);
