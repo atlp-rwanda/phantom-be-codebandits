@@ -10,9 +10,9 @@
 		"prepare": "husky install",
 		"start": "node src/app.js",
 		"dev": "nodemon src/app.js",
-		"lint": "eslint \"**/*.js\" --fix --max-warnings=0",
-		"format": "prettier --write ./**/*.{js,jsx,json}",
-		"lint-fix": "eslint \"**/*.js\" --fix",
+		"lint": "eslint \"src/**/*.js\" --fix --max-warnings=0",
+		"format": "prettier --write ./src/**/*.{js,jsx,json}",
+		"lint-fix": "eslint \"src/**/*.js\" --fix",
 		"createsuperuser": "node ./src/utils/superuser.js"
 	},
 	"repository": {
@@ -45,7 +45,7 @@
 	},
 	"lint-staged": {
 		"*.js": "npm run lint",
-		"*.{js,html,css,md}": "prettier --write  \"./**/*.{js,jsx,json}\""
+		"*.{js,html,css,md}": "prettier --write  \"src/**/*.{js,jsx,json}\""
 	},
 	"dependencies": {
 		"accesscontrol": "^2.2.1",

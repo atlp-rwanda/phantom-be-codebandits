@@ -5,5 +5,4 @@ npm run lint || (
   echo 'Check for linting errors';
   false;
 )
-npx lint-staged
 git add .
