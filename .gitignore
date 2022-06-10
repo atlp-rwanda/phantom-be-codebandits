@@ -16,7 +16,6 @@ coverage
 # Dependency directories
 node_modules
 jspm_packages
-dist
 
 #cache
 .eslintcache
@@ -28,3 +27,5 @@ dist
 .env.test.local
 .env.production.local
 .env.local
+dist
+build

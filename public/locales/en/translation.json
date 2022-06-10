@@ -1,0 +1,19 @@
+{
+	"hero_head_1": "Track bus location,",
+	"hero_head_2": "Save your time",
+	"hero_text_1": "Check the location of the buses",
+	"hero_text_2": "on their respective routes",
+	"hero_btn": "Start",
+	"how_it_work": "How it works",
+	"support": "Support",
+	"administration": "Administration",
+	"terms": "Terms of use",
+	"copyrights": "copyright",
+	"start": "Start",
+	"step_2": "Enter location & destination",
+	"step_3": "View the location of the nearest bus",
+	"step_1_text": "Click the starting button, to begin tracking buses",
+	"step_2_text": "In the respective fields, enter your current location and destination",
+	"step_3_text": "Through the map, you will see the location of the buses you want to track",
+	"track_bus": "Track bus"
+}

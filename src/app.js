@@ -31,6 +31,7 @@ app.use(cors(corsOptions));
 app.use(reqLogger);
 app.use(cookieParser());
 app.use(express.static(path.join(__dirname, 'public')));
+app.use(express.static(path.join(__dirname, 'dist')));
 app.use(express.urlencoded({ extended: true }));
 app.use(i18n.init);
 

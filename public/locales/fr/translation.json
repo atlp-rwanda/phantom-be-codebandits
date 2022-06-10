@@ -1,0 +1,20 @@
+{
+	"hero_head_1": "Suivez la location de bus,",
+	"hero_head_2": " économisez votre temps",
+	"hero_text_1": "Vérifiez l'emplacement des bus ",
+	"hero_text_2": " sur leurs itinéraires respectifs",
+	"hero_btn": "Démarrer",
+	"how_it_work": "Comment ça fonctionne",
+	"support": "Support",
+	"administration": "administration",
+	"terms": "Conditions d'utilisation",
+	"copyrights": "Droits d'auteur",
+	"start": "Démarrer",
+	"step_2": "Entrez l'emplacement & la destination",
+	"step_3": "voir l'emplacement du bus le plus proche",
+	"step_1_text": "Cliquez sur le bouton de démarrage pour commencer à suivre les bus",
+	"step_2_text": "Dans les champs respectifs, entrez votre position actuelle et votre destination",
+	"step_3_text": "À travers la carte, vous verrez l'emplacement des bus que vous souhaitez suivre",
+	"track_bus": "Sui le bus",
+	"login": "Connexion"
+}
